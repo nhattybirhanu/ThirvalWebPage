@@ -13,7 +13,7 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "api/index.mjs"
+      "dest": "dist/thrival-web-page/server/server.mjs"
     }
   ]
 }

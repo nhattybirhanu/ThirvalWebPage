@@ -10,7 +10,8 @@
     "build:ssr": "ng build --configuration production && ng run thrival-web-page:server:production",
     "serve:ssr": "node dist/thrival-web-page/server/server.mjs",
     "dev:ssr": "npm run build:ssr && npm run serve:ssr",
-    "vercel-build": "npm run build:ssr"
+    "vercel-build": "npm run build:ssr",
+    "start:server": "node dist/thrival-web-page/server/server.mjs"
   },
   "private": true,
   "dependencies": {
