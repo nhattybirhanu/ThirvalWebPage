@@ -1,1 +1,1 @@
-web: node dist/thrival-web-page/server/main.js
+web: node dist/thrival-web-page/server/server.mjs
