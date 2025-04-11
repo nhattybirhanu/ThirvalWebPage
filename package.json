@@ -9,7 +9,7 @@
     "test": "ng test",
     "serve:ssr:thrival-web-page": "node dist/thrival-web-page/server/server.mjs",
     "build:ssr:deploy": "npm run build && cd functions && npm install && cd .. && firebase deploy",
-    "build:ssr": "ng build && ng run thrival-web-page:serve",
+    "build:ssr": "ng run thrival-web-page:serve",
     "vercel-build": "npm run build:ssr"
   },
   "private": true,
