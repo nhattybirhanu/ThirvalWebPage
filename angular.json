@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ThrivalWebPage": {
+    "thrival-web-page": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -69,10 +69,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "ThrivalWebPage:build:production"
+              "buildTarget": "thrival-web-page:build:production"
             },
             "development": {
-              "buildTarget": "ThrivalWebPage:build:development"
+              "buildTarget": "thrival-web-page:build:development"
             }
           },
           "defaultConfiguration": "development"

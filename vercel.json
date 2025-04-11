@@ -2,13 +2,8 @@
   "version": 2,
   "builds": [
     {
-      "src": "server.js",
-      "use": "@vercel/node",
-      "config": {
-        "includeFiles": [
-          "dist/thrival-web-page/**"
-        ]
-      }
+      "src": "api/index.mjs",
+      "use": "@vercel/node"
     },
     {
       "src": "dist/thrival-web-page/browser/**",
@@ -18,7 +13,7 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "server.js"
+      "dest": "api/index.mjs"
     }
   ]
 }
