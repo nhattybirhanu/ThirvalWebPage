@@ -1,16 +1,16 @@
 // metadata.resolver.ts
-import {Inject, Injectable, makeStateKey, PLATFORM_ID} from '@angular/core';
+import {Inject, Injectable, makeStateKey, PLATFORM_ID, TransferState} from '@angular/core';
 import {Resolve, ActivatedRouteSnapshot, ActivatedRoute} from '@angular/router';
 import {map, Observable, of} from 'rxjs';
 import {ChallengeService} from "./challenge.service";
-import {Meta, MetaDefinition, Title, TransferState} from "@angular/platform-browser";
+import {Meta, MetaDefinition, Title} from "@angular/platform-browser";
 import {isPlatformBrowser,Location} from "@angular/common";
 const META_KEY = makeStateKey<MetaData>('meta-data');
 
 @Injectable({ providedIn: 'root' })
 export class MetadataResolver implements Resolve<any> {
-  // @Inject(PLATFORM_ID) private platformId: any
-  constructor(private challengeService: ChallengeService, private meta:Meta,private title:Title
+
+  constructor(@Inject(PLATFORM_ID) private platformId: any,private challengeService: ChallengeService, private meta:Meta,private title:Title
       ,
               private transferState: TransferState,
               private location:Location
@@ -26,14 +26,12 @@ export class MetadataResolver implements Resolve<any> {
   resolve(route: ActivatedRouteSnapshot): Observable<any> {
     let $id = route.params['$id']
     let page:Page=route.data['page']
-    // return this.getMeta(page,$id).pipe(map(value => {
-    //
-    //   // this.applyMetaData(value)
-    //   return value;
-    // })
-    return of(defaultMetaData()
-    )
-    ;
+    return this.getMeta(page,$id).pipe(map(value => {
+
+      this.applyMetaData(value)
+      return value;
+    }));
+
   }
 
   getMeta(page:Page,$id:string):Observable<MetaData>{
@@ -53,7 +51,7 @@ export class MetadataResolver implements Resolve<any> {
   applyMetaData(metadata:MetaData){
     console.log('Applying metadata:', metadata); // Add this to check the metadata before applying it
 
-    // this.title.setTitle(metadata.title);
+    this.title.setTitle(metadata.title);
 
     this.setMetaTag({ name: 'description', content: metadata.description });
     this.setMetaTag({ property: 'og:title', content: metadata.title });
@@ -69,11 +67,11 @@ export class MetadataResolver implements Resolve<any> {
     this.setMetaTag({ name: 'twitter:image', content: metadata.image });
 
     // Transfer metadata to client
-    // console.log("Image ",isPlatformBrowser(this.platformId))
-    // if (isPlatformBrowser(this.platformId)) {
-    //   this.updateFavicon(metadata.image);
-    //
-    // }
+    console.log("Image ",isPlatformBrowser(this.platformId))
+    if (isPlatformBrowser(this.platformId)) {
+      this.updateFavicon(metadata.image);
+
+    }
     this.transferState.set(META_KEY, metadata);
 
 
