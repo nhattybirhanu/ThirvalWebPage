@@ -4,9 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test",
+    "build": "npm run build:ssr",
     "build:ssr": "ng build --configuration production && ng run thrival-web-page:server:production",
     "serve:ssr": "node dist/thrival-web-page/server/server.mjs",
     "dev:ssr": "npm run build:ssr && npm run serve:ssr",
