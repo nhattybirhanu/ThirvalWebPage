@@ -2,21 +2,23 @@
   "version": 2,
   "builds": [
     {
-      "src": "package.json",
+      "src": "server.js",
       "use": "@vercel/node",
       "config": {
-        "handler": "dist/thrival-web-page/server/server.mjs",
-        "runtime": "nodejs18.x",
-        "environment": {
-          "NODE_ENV": "production"
-        }
+        "includeFiles": [
+          "dist/thrival-web-page/**"
+        ]
       }
+    },
+    {
+      "src": "dist/thrival-web-page/browser/**",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/dist/thrival-web-page/browser/index.html"
+      "dest": "server.js"
     }
   ]
 }

@@ -8,7 +8,9 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:ThrivalWebPage": "node dist/thrival-web-page/server/server.mjs",
-    "build:ssr:deploy": "npm run build && cd functions && npm install && cd .. && firebase deploy"
+    "build:ssr:deploy": "npm run build && cd functions && npm install && cd .. && firebase deploy",
+    "build:ssr": "ng build && ng run thrival-web-page:server",
+    "vercel-build": "npm run build:ssr"
   },
   "private": true,
   "dependencies": {
