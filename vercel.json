@@ -1,7 +1,7 @@
 {
   "version": 2,
   "buildCommand": "npm run vercel-build",
-  "outputDirectory": "dist/thrival-web-page/browser",
+  "outputDirectory": "dist/thrival-web-page/server",
   "routes": [
     {
       "src": "/(.*)",
