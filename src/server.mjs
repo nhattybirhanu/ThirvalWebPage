@@ -31,9 +31,9 @@ app.use('/**', (req, res, next) => {
 
 if (isMainModule(import.meta.url)) {
   const port = process.env['PORT'] || 4000;
-  app.listen(port, () => {
-    console.log(`✅ Local server listening at http://localhost:${port}`);
-  });
+  // app.listen(port, () => {
+  //   console.log(`✅ Local server listening at http://localhost:${port}`);
+  // });
 }
 
 // ✅ This is what Vercel needs
