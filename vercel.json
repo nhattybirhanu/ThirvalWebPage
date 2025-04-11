@@ -2,16 +2,6 @@
   "version": 2,
   "buildCommand": "npm run vercel-build",
   "outputDirectory": "dist/thrival-web-page/browser",
-  "builds": [
-    {
-      "src": "dist/thrival-web-page/server/server.mjs",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "dist/thrival-web-page/browser/**",
-      "use": "@vercel/static"
-    }
-  ],
   "routes": [
     {
       "src": "/(.*)",
