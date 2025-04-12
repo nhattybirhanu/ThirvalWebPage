@@ -1,15 +1,12 @@
 import {Inject, inject, Injectable, PLATFORM_ID} from '@angular/core';
 import {FinalColor} from 'extract-colors/lib/types/Color';
-import {async, map} from 'rxjs';
-import {DOCUMENT, isPlatformBrowser} from '@angular/common';
+import { isPlatformBrowser} from '@angular/common';
 import { extractColors } from "extract-colors/lib/worker-wrapper"
-import {extractColorsFromSrc} from 'extract-colors';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ColorService {
-   document = inject(DOCUMENT);
    schemaMap:Map<string,ColorSchema>=new Map()
   isBrowser:boolean;
 
@@ -19,7 +16,7 @@ export class ColorService {
   }
 
   async extractColorSchemeFromImageUrl(url:string,defaultColorSchema:ColorSchema){
-   const  schema= this.schemaMap.has(url)?this.schemaMap.get(url): (this.isBrowser?await getColorSchemaFromImage(url):defaultColorSchema)
+   const  schema= this.schemaMap.has(url)?this.schemaMap.get(url): (isPlatformBrowser(this.platformId)?await getColorSchemaFromImage(url):defaultColorSchema)
 
     return schema || defaultColorSchema
   }
