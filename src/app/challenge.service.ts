@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {lastValueFrom, Observable} from "rxjs";
 import {environment} from "../environments/environment";
 
 @Injectable({
@@ -10,12 +10,7 @@ export class ChallengeService {
 
   constructor(private httpClient:HttpClient) { }
 
-  getChallengePack($id:string):Observable<ChallengePack>{
-    return this.httpClient.get<ChallengePack>(`${environment.BASE_URL}/challenges/title`,{
-      params:{
-        title:$id
-      }
-    })  }
+
   getChallenge($id:string):Observable<ChallengePack>{
     return this.httpClient.get<ChallengePack>(`${environment.BASE_URL}/challenges/title`,{
       params:{
@@ -28,13 +23,15 @@ export class ChallengeService {
   }
 
   async getIds() {
-    return new Promise<string[]>(resolve => {
-      this.getChallengeTitles().subscribe(value => {
-        resolve(value)
+    return await lastValueFrom(this.getChallengeTitles());
 
-      })
-    })
   }
+  getChallengePack($id:string):Observable<ChallengePack>{
+    return this.httpClient.get<ChallengePack>(`${environment.BASE_URL}/challenges/title`,{
+      params:{
+        title:$id
+      }
+    })  }
 }
 export interface ChallengePack {
   id: string;

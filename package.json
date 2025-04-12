@@ -8,13 +8,12 @@
     "build:ssr": "ng build --configuration production && ng run thrival-web-page:server:production",
     "serve:ssr": "node dist/thrival-web-page/server/server.mjs",
     "dev:ssr": "npm run build:ssr && npm run serve:ssr",
-    "vercel-build": "npm run build:ssr",
+    "vercel-build": "npm run build:ssr && npm run prerender",
     "start": "node dist/thrival-web-page/server/server.mjs",
     "heroku-postbuild": "npm run build:ssr",
     "local:ssr": "ng build --watch",
     "nodemon": "nodemon",
-    "generate:routes": "node generate-routes.js",
-    "prerender": "npm run generate:routes && ng run thrival-web-page:prerender"
+    "generate:routes": "node generate-routes.js"
   },
   "private": true,
   "dependencies": {
@@ -30,6 +29,7 @@
     "express": "^4.18.2",
     "extract-colors": "^4.2.0",
     "lottie-web": "^5.10.2",
+    "node-fetch": "^3.3.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
