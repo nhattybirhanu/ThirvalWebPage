@@ -34,10 +34,10 @@ export class HeroComponent implements OnInit{
 
   ngOnInit(): void {
     if (this.image){
+      if (isPlatformBrowser(this.platformId))
       this.injectDynamicStyle(this.image)
       this.colorService.extractColorSchemeFromImageUrl(this.image,this.detailCardColorSchema).then(value => {
         this.detailCardColorSchema =value;
-        console.log("Hero color ", this.detailCardColorSchema)
       })
 
     }

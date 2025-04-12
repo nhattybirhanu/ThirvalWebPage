@@ -1,7 +1,7 @@
-import {inject, Injectable} from '@angular/core';
+import {Inject, inject, Injectable, PLATFORM_ID} from '@angular/core';
 import {FinalColor} from 'extract-colors/lib/types/Color';
 import {async, map} from 'rxjs';
-import {DOCUMENT} from '@angular/common';
+import {DOCUMENT, isPlatformBrowser} from '@angular/common';
 import { extractColors } from "extract-colors/lib/worker-wrapper"
 import {extractColorsFromSrc} from 'extract-colors';
 
@@ -11,11 +11,15 @@ import {extractColorsFromSrc} from 'extract-colors';
 export class ColorService {
    document = inject(DOCUMENT);
    schemaMap:Map<string,ColorSchema>=new Map()
+  isBrowser:boolean;
 
-  constructor() { }
+  constructor(@Inject(PLATFORM_ID) private platformId: any) {
+    this.isBrowser = isPlatformBrowser(this.platformId)
+
+  }
 
   async extractColorSchemeFromImageUrl(url:string,defaultColorSchema:ColorSchema){
-   const  schema= this.schemaMap.has(url)?this.schemaMap.get(url): await getColorSchemaFromImage(url)
+   const  schema= this.schemaMap.has(url)?this.schemaMap.get(url): (this.isBrowser?await getColorSchemaFromImage(url):defaultColorSchema)
 
     return schema || defaultColorSchema
   }
@@ -54,7 +58,6 @@ export async function getColorSchemaFromImage(
       hueDistance: 0.083333333
 
     });
-    console.log("Image extractor ",colors)
     if (colors.length < 3) return null;
 
     return {

@@ -45,7 +45,6 @@ export class MetadataResolver implements Resolve<any> {
 
   }
   applyMetaData(metadata:MetaData){
-    console.log("Metdata ",metadata)
     this.title.setTitle(metadata.title);
 
     this.setMetaTag({ name: 'description', content: metadata.description });
@@ -62,7 +61,6 @@ export class MetadataResolver implements Resolve<any> {
     this.setMetaTag({ name: 'twitter:image', content: metadata.image });
 
     // Transfer metadata to client
-    console.log("Image ",isPlatformBrowser(this.platformId))
     if (isPlatformBrowser(this.platformId)) {
       this.updateFavicon(metadata.image);
     }

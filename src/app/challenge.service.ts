@@ -11,10 +11,17 @@ export class ChallengeService {
   constructor(private httpClient:HttpClient) { }
 
   getChallengePack($id:string):Observable<ChallengePack>{
-    return this.httpClient.get<ChallengePack>(`${environment.BASE_URL}/challenge-pack/${$id}`)
-  }
+    return this.httpClient.get<ChallengePack>(`${environment.BASE_URL}/challenges/title`,{
+      params:{
+        title:$id
+      }
+    })  }
   getChallenge($id:string):Observable<ChallengePack>{
-    return this.httpClient.get<ChallengePack>(`${environment.BASE_URL}/challenges/titles/${$id}`)
+    return this.httpClient.get<ChallengePack>(`${environment.BASE_URL}/challenges/title`,{
+      params:{
+        title:$id
+      }
+    })
   }
   getChallengeTitles():Observable<string[]>{
     return this.httpClient.get<string[]>(`${environment.BASE_URL}/challenges/titles`)
