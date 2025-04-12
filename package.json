@@ -12,7 +12,7 @@
     "start": "node dist/thrival-web-page/server/server.mjs",
     "heroku-postbuild": "npm run build:ssr",
     "local:ssr": "ng build --watch",
-    "nodemon": "nodemon",
+    "nodemon": "nodemon"
   },
   "private": true,
   "dependencies": {
