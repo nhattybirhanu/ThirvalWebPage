@@ -81,6 +81,6 @@ export interface CategoryChallenge {
 }export interface Media {
   $id: string;
   animationUrl: string;
-  imageUrl: string;
+  imageUrl: string | undefined;
   videoUrl: string;
 }

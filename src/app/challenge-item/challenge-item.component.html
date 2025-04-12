@@ -1,5 +1,5 @@
 <div *ngIf="challenge" [style]="buildStyle([buildCssProperty('border-color',colorSchema.background)])" class="challenge-item">
-  <img class="image" [src]="challenge.media.imageUrl">
+  <img class="image" *ngIf="challenge.media.imageUrl" [src]="challenge.media.imageUrl">
 
   <div class="challenge-info">
     <strong [style]="buildStyle([buildCssProperty('color',colorSchema.primaryText)])">{{ challenge.title }}</strong>

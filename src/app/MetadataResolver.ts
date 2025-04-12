@@ -34,12 +34,12 @@ export class MetadataResolver implements Resolve<any> {
     switch (page) {
       case Page.Challenge:{
        return  this.challengeService.getChallenge($id).pipe(map(value => {
-          let metaData:MetaData={title:value.title,description:value.description,image:value.media.imageUrl}
+          let metaData:MetaData={title:value.title,description:value.description,image:value.media.imageUrl || ''}
           return metaData}))
       }
       case Page.ChallengePack:
         return  this.challengeService.getChallengePack($id).pipe(map(value => {
-          let metaData:MetaData={title:value.title,description:value.description,image:value.media.imageUrl}
+          let metaData:MetaData={title:value.title,description:value.description,image:value.media.imageUrl || ''}
           return metaData}))
     }
 
