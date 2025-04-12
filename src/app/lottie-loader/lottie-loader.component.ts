@@ -48,14 +48,14 @@ export class LottieLoaderComponent implements OnInit, AfterViewInit{
     this.isBrowser = isPlatformBrowser(this.platformId)
 
     if (this.containerRef&&this.isBrowser){
-      let lottieAnimation= lottie.loadAnimation({
-        container: this.containerRef.nativeElement,
-        renderer: 'svg',
-        loop: true,
-        autoplay: true,
-        path: this.animationUrl || 'assets/animations/welcome.json',
-
-      });
+      // let lottieAnimation= lottie.loadAnimation({
+      //   container: this.containerRef.nativeElement,
+      //   renderer: 'svg',
+      //   loop: true,
+      //   autoplay: true,
+      //   path: this.animationUrl || 'assets/animations/welcome.json',
+      //
+      // });
     }
 
   }
