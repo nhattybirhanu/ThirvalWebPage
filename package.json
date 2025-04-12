@@ -13,7 +13,6 @@
     "heroku-postbuild": "npm run build:ssr",
     "local:ssr": "ng build --watch",
     "nodemon": "nodemon",
-    "generate:routes": "node generate-routes.js"
   },
   "private": true,
   "dependencies": {
