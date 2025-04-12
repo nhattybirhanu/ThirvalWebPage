@@ -37,6 +37,7 @@ export class LottieLoaderComponent implements OnInit, AfterViewInit{
   @Input() height:string="300px"
   isBrowser:boolean=false;
   constructor(@Inject(PLATFORM_ID) private platformId: any) {
+
   }
 
   ngOnInit(): void {
@@ -47,15 +48,15 @@ export class LottieLoaderComponent implements OnInit, AfterViewInit{
   ngAfterViewInit() {
     this.isBrowser = isPlatformBrowser(this.platformId)
 
-    if (this.containerRef&&this.isBrowser){
-      // let lottieAnimation= lottie.loadAnimation({
-      //   container: this.containerRef.nativeElement,
-      //   renderer: 'svg',
-      //   loop: true,
-      //   autoplay: true,
-      //   path: this.animationUrl || 'assets/animations/welcome.json',
-      //
-      // });
+    if (this.containerRef&&isPlatformBrowser(this.platformId)){
+      let lottieAnimation= lottie.loadAnimation({
+        container: this.containerRef.nativeElement,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: this.animationUrl || 'assets/animations/welcome.json',
+
+      });
     }
 
   }
