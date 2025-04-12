@@ -14,11 +14,23 @@ export class ChallengeService {
     return this.httpClient.get<ChallengePack>(`${environment.BASE_URL}/challenge-pack/${$id}`)
   }
   getChallenge($id:string):Observable<ChallengePack>{
-    return this.httpClient.get<ChallengePack>(`${environment.BASE_URL}/challenge/${$id}`)
+    return this.httpClient.get<ChallengePack>(`${environment.BASE_URL}/challenges/titles/${$id}`)
+  }
+  getChallengeTitles():Observable<string[]>{
+    return this.httpClient.get<string[]>(`${environment.BASE_URL}/challenges/titles`)
+  }
+
+  async getIds() {
+    return new Promise<string[]>(resolve => {
+      this.getChallengeTitles().subscribe(value => {
+        resolve(value)
+
+      })
+    })
   }
 }
 export interface ChallengePack {
-  $id: string;
+  id: string;
   userId: string;
   title: string;
   subTitle: string;

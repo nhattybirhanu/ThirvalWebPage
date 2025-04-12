@@ -1,0 +1,42 @@
+.challenge-item {
+  display: flex;
+  align-items: center;
+  background: #212121;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: 0.3s ease;
+  margin: 16px;
+  /*height: 110px;*/
+  border: 2px solid;
+
+
+}
+.challenge-info{
+  padding: 12px;
+}
+
+.challenge-icon {
+  font-size: 1.2rem;
+}
+
+.challenge-info h4 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.challenge-info p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+.image{
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 100px;
+  height: 100%;
+  border-radius: 12px;
+
+}

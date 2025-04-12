@@ -16,15 +16,11 @@ export class MetadataResolver implements Resolve<any> {
               private location:Location
 
   ) {
-    // console.log("Platform ",this.platformId)
-    // if (isPlatformBrowser(this.platformId)) {
-    //   (global as any).Node = (window as any).Node;
-    // }
 
   }
 
   resolve(route: ActivatedRouteSnapshot): Observable<any> {
-    let $id = route.params['$id']
+    let $id = route.params['id']
     let page:Page=route.data['page']
     return this.getMeta(page,$id).pipe(map(value => {
 
@@ -49,8 +45,7 @@ export class MetadataResolver implements Resolve<any> {
 
   }
   applyMetaData(metadata:MetaData){
-    console.log('Applying metadata:', metadata); // Add this to check the metadata before applying it
-
+    console.log("Metdata ",metadata)
     this.title.setTitle(metadata.title);
 
     this.setMetaTag({ name: 'description', content: metadata.description });
@@ -70,7 +65,6 @@ export class MetadataResolver implements Resolve<any> {
     console.log("Image ",isPlatformBrowser(this.platformId))
     if (isPlatformBrowser(this.platformId)) {
       this.updateFavicon(metadata.image);
-
     }
     this.transferState.set(META_KEY, metadata);
 

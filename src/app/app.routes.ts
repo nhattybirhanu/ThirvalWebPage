@@ -8,7 +8,7 @@ import {ChallengeComponent} from './challenge/challenge.component';
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'about', component: AboutComponent },
-  {path:'challenge-pack/:$id',component:ChallengePackComponent,resolve:{
+  {path:'challenge-pack/:id',component:ChallengePackComponent,resolve:{
       metadata:MetadataResolver
     },
     data:{
@@ -16,6 +16,6 @@ export const routes: Routes = [
     },
 
   },
-  {path:'challenge/:$id',component:ChallengeComponent},
+  {path:'challenge/:id',component:ChallengeComponent},
   { path: '**', redirectTo: '' }
 ];

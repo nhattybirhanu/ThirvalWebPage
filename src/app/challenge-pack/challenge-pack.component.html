@@ -1,1 +1,40 @@
-<p>challenge-pack works!</p>
+<div *ngIf="challengePack">
+  <div  class="overlay">
+    <app-hero
+      [title]="challengePack?.title"
+      [subtitle]="challengePack?.description"
+      [image]="challengePack?.media?.imageUrl"
+    ></app-hero>
+
+  </div>
+  <section class="challenges-section">
+
+      <div class="detail-card" [style]="buildStyle([buildCssProperty('border','2px solid '+detailCardColorSchema.background)])">
+        <app-lottie-loader [image]="challengePack.media.imageUrl" [animationUrl]="challengePack.media.animationUrl"></app-lottie-loader>
+
+
+        <div style="text-align: center">
+
+          <h1 >Challenges </h1>
+
+          <div style="text-align: center">
+            <div class="chip large primary margin-m">{{challengePack.totalPoint}} <i class="fas fa-trophy"></i>  <!-- Solid style --></div>
+            <span class="chip margin-m large">
+          <i class="fa-solid fa-calendar-week"></i> {{challengePack.daysToComplete}}</span>
+
+          </div>
+        </div>
+        <ul style="list-style-type:none;">
+          <li *ngFor="let challenge of challengePack.challenges">
+            <app-challenge-item [colorSchema]="detailCardColorSchema" [challenge]="challenge"></app-challenge-item>
+          </li>
+        </ul>
+
+        <div class="margin-m" style="text-align: center">
+          <span class="chip margin-sm"  *ngFor="let tag of challengePack.tags">{{tag.toUpperCase()}}</span>
+
+        </div>
+      </div>
+  </section>
+  <app-footer></app-footer>
+</div>

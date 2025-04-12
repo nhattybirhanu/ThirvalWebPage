@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
-import {NgIf} from "@angular/common";
+import {Component, Inject, Input, OnInit, PLATFORM_ID, Renderer2} from '@angular/core';
+import {isPlatformBrowser, NgIf} from "@angular/common";
+import {buildCssProperty, buildStyle, ColorSchema, ColorService} from '../../color.service';
 
 @Component({
     selector: 'app-hero',
@@ -7,26 +8,54 @@ import {NgIf} from "@angular/common";
     imports: [
         NgIf
     ],
-    template: `
-    <section class="hero">
-      <div class="container hero-content">
-        <h1 style="font-size: 3.5rem; margin-bottom: 20px; font-weight: 800;">
-          {{ title }}
-        </h1>
-        <p *ngIf="subtitle"
-           style="font-size: 1.25rem; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
-          {{ subtitle }}
-        </p>
-        <div *ngIf="showCta" style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-          <a href="#signup" class="btn btn-primary">Get Started – It's Free!</a>
-          <a href="#challenges" class="btn btn-secondary">Explore Challenges</a>
-        </div>
-      </div>
-    </section>
-  `
+  templateUrl: './hero.component.html',
+
 })
-export class HeroComponent {
-  @Input() title = '';
-  @Input() subtitle = '';
+export class HeroComponent implements OnInit{
+  @Input() title:string | undefined = '';
+  @Input() subtitle:string | undefined  = '';
   @Input() showCta = false;
+
+  @Input() image:undefined |string
+  detailCardColorSchema:ColorSchema ={
+    accent:'#6366F1',
+    background:'#4F46E5',
+    primaryText:'#ffffff',
+    secondaryText:'#ABABABFF'
+
+  }
+    constructor(private renderer:Renderer2,
+                @Inject(PLATFORM_ID) private platformId: Object,
+                private colorService:ColorService
+
+    ) {
+    }
+
+
+  ngOnInit(): void {
+    if (this.image){
+      this.injectDynamicStyle(this.image)
+      this.colorService.extractColorSchemeFromImageUrl(this.image,this.detailCardColorSchema).then(value => {
+        this.detailCardColorSchema =value;
+        console.log("Hero color ", this.detailCardColorSchema)
+      })
+
+    }
+
+  }
+  injectDynamicStyle(url: string) {
+    const style = this.renderer.createElement('style');
+    style.innerHTML = `
+      .hero::before {
+        background: url('${url}');
+        background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      }
+    `;
+    this.renderer.appendChild(document.head, style);
+  }
+
+  protected readonly buildStyle = buildStyle;
+  protected readonly buildCssProperty = buildCssProperty;
 }

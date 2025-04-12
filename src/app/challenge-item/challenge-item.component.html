@@ -1,1 +1,8 @@
-<p>challenge-item works!</p>
+<div *ngIf="challenge" [style]="buildStyle([buildCssProperty('border-color',colorSchema.background)])" class="challenge-item">
+  <img class="image" [src]="challenge.media.imageUrl">
+
+  <div class="challenge-info">
+    <strong [style]="buildStyle([buildCssProperty('color',colorSchema.primaryText)])">{{ challenge.title }}</strong>
+    <p >{{ challenge.description }}</p>
+  </div>
+</div>

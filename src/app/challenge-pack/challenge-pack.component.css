@@ -1,0 +1,21 @@
+.challenges-section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+
+}
+.detail-card{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  /*border: 2px solid #ffffff;*/
+  border-radius: 8px;
+  width: 30vw;
+  padding: 18px;
+  min-width: 400px;
+  box-shadow: 0 4px 6px rgba(99, 102, 241, 0.2);
+
+}
