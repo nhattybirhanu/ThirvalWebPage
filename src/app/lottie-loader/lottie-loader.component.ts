@@ -12,7 +12,6 @@ import {
   WritableSignal
 } from '@angular/core';
 import player from 'lottie-web';
-import lottie from 'lottie-web';
 
 import {isPlatformBrowser, NgIf} from '@angular/common';
 import {buildCssProperty, buildStyle} from '../color.service';
@@ -49,16 +48,20 @@ export class LottieLoaderComponent implements OnInit, AfterViewInit{
     this.isBrowser = isPlatformBrowser(this.platformId)
 
     if (this.containerRef&&isPlatformBrowser(this.platformId)){
-      let lottieAnimation= lottie.loadAnimation({
-        container: this.containerRef.nativeElement,
-        renderer: 'svg',
-        loop: true,
-        autoplay: true,
-        path: this.animationUrl || 'assets/animations/welcome.json',
-
-      });
+      this.loadAnimation();
     }
 
+  }
+ async loadAnimation(){
+    const lottie = await import('lottie-web');
+    let lottieAnimation= lottie.default.loadAnimation({
+      container: this.containerRef!.nativeElement,
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      path: this.animationUrl || 'assets/animations/welcome.json',
+
+    });
   }
 
 
