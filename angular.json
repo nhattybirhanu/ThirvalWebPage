@@ -115,14 +115,7 @@
             "scripts": []
           }
         },
-        "prerender": {
-          "builder": "@angular-devkit/build-angular:prerender",
-          "options": {
-            "browserTarget": "thrival-web-page:build:production",
-            "serverTarget": "thrival-web-page:server:production",
-            "routesFile": "src/app/app.routes.server.ts"
-          }
-        },
+
 
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
