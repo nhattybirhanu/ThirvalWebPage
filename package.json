@@ -8,11 +8,13 @@
     "build:ssr": "ng build --configuration production && ng run thrival-web-page:server:production",
     "serve:ssr": "node dist/thrival-web-page/server/server.mjs",
     "dev:ssr": "npm run build:ssr && npm run serve:ssr",
-    "vercel-build": "npm run build:ssr",
+    "vercel-build": "npm run build:ssr && npm run prerender",
     "start": "node dist/thrival-web-page/server/server.mjs",
     "heroku-postbuild": "npm run build:ssr",
     "local:ssr": "ng build --watch",
-    "nodemon": "nodemon"
+    "nodemon": "nodemon",
+    "prerender": "ng run thrival-web-page:prerender"
+
   },
   "private": true,
   "dependencies": {

@@ -12,14 +12,14 @@ export class ChallengeService {
 
 
   getChallenge($id:string):Observable<ChallengePack>{
-    return this.httpClient.get<ChallengePack>(`${environment.BASE_URL}/challenges/title`,{
+    return this.httpClient.get<ChallengePack>(`${environment.BASE_URL}/challenges/slug`,{
       params:{
-        title:$id
+        slug:$id
       }
     })
   }
   getChallengeTitles():Observable<string[]>{
-    return this.httpClient.get<string[]>(`${environment.BASE_URL}/challenges/titles`)
+    return this.httpClient.get<string[]>(`${environment.BASE_URL}/challenges/slugs`)
   }
 
   async getIds() {
@@ -27,9 +27,9 @@ export class ChallengeService {
 
   }
   getChallengePack($id:string):Observable<ChallengePack>{
-    return this.httpClient.get<ChallengePack>(`${environment.BASE_URL}/challenges/title`,{
+    return this.httpClient.get<ChallengePack>(`${environment.BASE_URL}/challenges/slug`,{
       params:{
-        title:$id
+        slug:$id
       }
     })  }
 }
