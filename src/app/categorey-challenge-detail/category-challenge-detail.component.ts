@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ChallengeCategoryPackList, ChallengeService} from '../challenge.service';
+import {ChallengeCategoryPackList, ChallengeService, Media} from '../challenge.service';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {NgForOf, NgIf} from '@angular/common';
 import {FooterComponent} from '../components/footer/footer.component';
@@ -7,6 +7,7 @@ import {HeroComponent} from '../components/hero/hero.component';
 import {LottieLoaderComponent} from '../lottie-loader/lottie-loader.component';
 import {buildCssProperty, buildStyle} from '../color.service';
 import {slugify} from '../util';
+import {MetadataResolver} from '../MetadataResolver';
 
 @Component({
   selector: 'app-category-challenge-detail',
@@ -24,7 +25,9 @@ import {slugify} from '../util';
 })
 export class CategoryChallengeDetailComponent implements OnInit{
   categoryChallengePacks:ChallengeCategoryPackList | undefined;
-  constructor(private challengeService:ChallengeService, private activeRoute:ActivatedRoute, private router:Router) {
+  constructor(private challengeService:ChallengeService, private activeRoute:ActivatedRoute, private router:Router,
+              private metaResolver:MetadataResolver
+              ) {
   }
 
   ngOnInit(): void {
@@ -33,7 +36,11 @@ export class CategoryChallengeDetailComponent implements OnInit{
       if (slug){
       this.challengeService.getCategoryChallengePack(slug).subscribe(challengeCategory => {
         this.categoryChallengePacks=challengeCategory;
-        console.log("challengeCategory",challengeCategory)
+        this.metaResolver.applyMetaData({
+          title:challengeCategory.category.name,
+          description:challengeCategory.category.description,
+          image:challengeCategory.category.media.imageUrl || ''
+        })
       })
       }
     })
