@@ -14,7 +14,6 @@
     "local:ssr": "ng build --watch",
     "nodemon": "nodemon",
     "prerender": "ng run thrival-web-page:prerender"
-
   },
   "private": true,
   "dependencies": {
@@ -27,6 +26,7 @@
     "@angular/router": "^19.2.0",
     "@angular/ssr": "^19.2.6",
     "@fortawesome/fontawesome-free": "^6.7.2",
+    "bootstrap": "^5.3.5",
     "express": "^4.18.2",
     "extract-colors": "^4.2.0",
     "lottie-web": "^5.10.2",

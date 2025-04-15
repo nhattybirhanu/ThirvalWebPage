@@ -1,0 +1,28 @@
+<div *ngIf="categoryChallengePacks">
+  <div class="container p-6">
+    <app-hero
+      class="mb-5"
+      [image]="categoryChallengePacks.category.media.imageUrl"
+      [title]="categoryChallengePacks.category.name"
+      [subtitle]="categoryChallengePacks.category.description">
+
+    </app-hero>
+    <div class="row margin-lg" id="ex_row_cat" [style]="buildCssProperty('margin-top','16px')">
+        <div *ngFor="let challenges of categoryChallengePacks.challengePacks" class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 shadow-lg">
+          <div class="card h-100 shadow-sm border-info card-hover " (click)="openChallenges(slugify(challenges.title))"   [style]="buildStyle([buildCssProperty('background-color','#1F2937')])" >
+            <app-lottie-loader *ngIf="challenges.media" [width]="'100%'" [animationUrl]="challenges.media.animationUrl" [image]="challenges.media.imageUrl" class="card-img-top"  />
+            <div class="card-body d-flex flex-column   " >
+              <h5 class="card-title" [style]="buildStyle([buildCssProperty('color','white')])" >{{ challenges.title }}</h5>
+              <p class="card-text  small flex-grow-1" [style]="buildStyle([buildCssProperty('color','white')])">{{ challenges.description }}</p>
+              <!--            <button [routerLink]="['explore',category.slug]"  class="btn btn-light">{{ category.count }} challenges</button>-->
+            </div>
+          </div>
+
+        </div>
+
+    </div>
+    <app-footer></app-footer>
+
+  </div>
+
+</div>

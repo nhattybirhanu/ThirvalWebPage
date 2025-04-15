@@ -1,13 +1,15 @@
 import {Component, Inject, Input, OnInit, PLATFORM_ID, Renderer2} from '@angular/core';
 import {isPlatformBrowser, NgIf} from "@angular/common";
 import {buildCssProperty, buildStyle, ColorSchema, ColorService} from '../../color.service';
+import {RouterLink} from '@angular/router';
 
 @Component({
     selector: 'app-hero',
     standalone:true,
-    imports: [
-        NgIf
-    ],
+  imports: [
+    NgIf,
+    RouterLink
+  ],
   templateUrl: './hero.component.html',
 
 })
@@ -50,7 +52,6 @@ export class HeroComponent implements OnInit{
         background: url('${url}');
         background-position: center;
       background-repeat: no-repeat;
-      background-size: cover;
       }
     `;
     this.renderer.appendChild(document.head, style);

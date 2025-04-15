@@ -8,11 +8,12 @@ import { extractColors } from "extract-colors/lib/worker-wrapper"
 })
 export class ColorService {
    schemaMap:Map<string,ColorSchema>=new Map()
-  isBrowser:boolean;
 
   constructor(@Inject(PLATFORM_ID) private platformId: any) {
-    this.isBrowser = isPlatformBrowser(this.platformId)
 
+  }
+  get isBrowser(){
+    return isPlatformBrowser(this.platformId)
   }
 
   async extractColorSchemeFromImageUrl(url:string,defaultColorSchema:ColorSchema){
@@ -52,7 +53,8 @@ export async function getColorSchemaFromImage(
       colorValidator: (red, green, blue, alpha = 255) => alpha > 250,
       saturationDistance: 0.2,
       lightnessDistance: 0.2,
-      hueDistance: 0.083333333
+      hueDistance: 0.083333333,
+      requestMode:'no-cors'
 
     });
     if (colors.length < 3) return null;

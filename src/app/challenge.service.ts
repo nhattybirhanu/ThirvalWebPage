@@ -18,13 +18,19 @@ export class ChallengeService {
       }
     })
   }
+  getCategoryChallengePack(slug:string):Observable<ChallengeCategoryPackList>{
+    return this.httpClient.get<ChallengeCategoryPackList>(`${environment.BASE_URL}/challengesPack/categories/${slug}`)
+  }
   getChallengeTitles():Observable<string[]>{
     return this.httpClient.get<string[]>(`${environment.BASE_URL}/challenges/slugs`)
   }
 
   async getIds() {
     return await lastValueFrom(this.getChallengeTitles());
+  }
 
+   getCategories(){
+    return this.httpClient.get<ChallengeCategory[]>(`${environment.BASE_URL}/categories`)
   }
   getChallengePack($id:string):Observable<ChallengePack>{
     return this.httpClient.get<ChallengePack>(`${environment.BASE_URL}/challenges/slug`,{
@@ -75,7 +81,7 @@ export interface Challenge {
 
 }
 export interface CategoryChallenge {
-  $id: string;
+  id: string;
   level: string;
   name: string;
 }export interface Media {
@@ -83,4 +89,21 @@ export interface CategoryChallenge {
   animationUrl: string;
   imageUrl: string | undefined;
   videoUrl: string;
+}
+export interface LevelCount {
+  level:string,
+  count:string
+}
+export interface ChallengeCategory{
+  id:string;
+  name:string;
+  description:string;
+  levelCounts:LevelCount[];
+  media:Media;
+  count:number,
+  slug:string
+}
+export interface ChallengeCategoryPackList{
+  category:ChallengeCategory,
+  challengePacks:ChallengePack[]
 }

@@ -1,14 +1,15 @@
 import { RenderMode, ServerRoute } from '@angular/ssr';
+import {environment} from '../environments/environment.prod';
 
 
 export const serverRoutes: ServerRoute[] = [
   {
 
-    path: 'challenge-pack/:id',
+    path: 'challenges/:id',
     renderMode: RenderMode.Prerender,
     async getPrerenderParams() {
       try {
-        const res = await fetch('https://challenger-stage-a6c8f9714982.herokuapp.com/api/v1/public/challenges/slugs');
+        const res = await fetch(`${environment.BASE_URL}challenges/slugs`);
 
         if (!res.ok) {
           console.error('Failed to fetch challenge titles:', res.statusText);
