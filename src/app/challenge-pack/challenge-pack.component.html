@@ -1,4 +1,4 @@
-<div *ngIf="challengePack">
+<div class="container" *ngIf="challengePack">
   <div  class="overlay">
     <app-hero
       [title]="challengePack.title"
@@ -10,13 +10,13 @@
   </div>
   <section class="challenges-section">
 
-      <div class="detail-card" [style]="buildStyle([buildCssProperty('border','2px solid '+detailCardColorSchema.background)])">
+      <div class="detail-card" [style]="buildStyle([buildCssProperty('border','2px solid white')])">
         <app-lottie-loader [image]="challengePack.media.imageUrl" [animationUrl]="challengePack.media.animationUrl"></app-lottie-loader>
 
 
         <div style="text-align: center">
 
-          <h1 >Challenges </h1>
+          <h1 style="color: white" >Challenges </h1>
 
           <div style="text-align: center">
             <div class="chip large primary margin-m">{{challengePack.totalPoint}} <i class="fas fa-trophy"></i>  <!-- Solid style --></div>

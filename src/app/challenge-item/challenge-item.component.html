@@ -1,4 +1,4 @@
-<div *ngIf="challenge" [style]="buildStyle([buildCssProperty('border-color',colorSchema.background)])" class="challenge-item">
+<div *ngIf="challenge" [style]="buildStyle([buildCssProperty('border-color','white')])" class="challenge-item">
   <img class="image" *ngIf="challenge.media&&challenge.media.imageUrl" [src]="challenge.media.imageUrl">
 
   <div class="challenge-info">
