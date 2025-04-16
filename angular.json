@@ -33,6 +33,9 @@
               "src/assets"
 
             ],
+            "allowedCommonJsDependencies": [
+              "lotti-web"
+            ],
             "styles": [
               "src/styles.scss",
               "src/app-framework.scss",
