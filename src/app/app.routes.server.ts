@@ -9,7 +9,7 @@ export const serverRoutes: ServerRoute[] = [
     renderMode: RenderMode.Prerender,
     async getPrerenderParams() {
       try {
-        const res = await fetch(`${environment.BASE_URL}challenges/slugs`);
+        const res = await fetch(`${environment.BASE_URL}/challenges/slugs`);
 
         if (!res.ok) {
           console.error('Failed to fetch challenge titles:', res.statusText);
