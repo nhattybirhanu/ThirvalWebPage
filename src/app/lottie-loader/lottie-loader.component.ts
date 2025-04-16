@@ -58,8 +58,8 @@ export class LottieLoaderComponent implements OnInit, AfterViewInit{
     }
 
   ngAfterViewInit() {
-    console.log("Lottie component ",this.lottiComponent)
     this.isBrowser = isPlatformBrowser(this.platformId)
+    console.log("is browser ",isPlatformBrowser(this.platformId))
 
 
 
