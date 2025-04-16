@@ -17,11 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "allowedCommonJsDependencies": [
-              "lottie-web"
-            ],
-
-            "outputPath": "dist/thrival-web-page",
+                   "outputPath": "dist/thrival-web-page",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [

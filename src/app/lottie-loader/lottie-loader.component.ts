@@ -15,6 +15,7 @@ import player from 'lottie-web';
 
 import {isPlatformBrowser, NgIf} from '@angular/common';
 import {buildCssProperty, buildStyle} from '../color.service';
+import { LottieComponent, AnimationOptions } from 'ngx-lottie';
 
 
 @Component({
@@ -23,7 +24,7 @@ import {buildCssProperty, buildStyle} from '../color.service';
   templateUrl: './lottie-loader.component.html',
   styleUrl: './lottie-loader.component.scss',
   standalone:true,
-  imports: [NgIf,
+  imports: [NgIf, LottieComponent,
   ],
 })
 export class LottieLoaderComponent implements OnInit, AfterViewInit{
@@ -35,21 +36,32 @@ export class LottieLoaderComponent implements OnInit, AfterViewInit{
   @Input() width:string="300px"
   @Input() height:string="300px"
   isBrowser:boolean=false;
+  @Input() options  = signal({
+    path: 'assets/animations/welcome.json',
+  });
+  @ViewChild("lottieComponent") lottiComponent:LottieComponent| undefined
   constructor(@Inject(PLATFORM_ID) private platformId: any) {
+    this.isBrowser = isPlatformBrowser(this.platformId)
 
   }
 
   ngOnInit(): void {
     if (this.animationUrl){
+      if (isPlatformBrowser(this.platformId)){
+        // this.loadAnimation();
+        // this.lottiComponent.options={}
+        this.options.set({
+          path: this.animationUrl
+        })
+      }
       }
     }
 
   ngAfterViewInit() {
+    console.log("Lottie component ",this.lottiComponent)
     this.isBrowser = isPlatformBrowser(this.platformId)
 
-    if (this.containerRef&&isPlatformBrowser(this.platformId)){
-      this.loadAnimation();
-    }
+
 
   }
  async loadAnimation(){
@@ -63,7 +75,13 @@ export class LottieLoaderComponent implements OnInit, AfterViewInit{
 
     });
   }
-
+  // options():Signal<AnimationOptions> {
+  //   return {
+  //     path: '/assets/your-animation.json', // Path to your Lottie file
+  //     loop: true,
+  //     autoplay: true,
+  //   };
+  // }
 
   protected readonly buildStyle = buildStyle;
   protected readonly buildCssProperty = buildCssProperty;
