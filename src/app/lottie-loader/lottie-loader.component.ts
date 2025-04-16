@@ -36,9 +36,8 @@ export class LottieLoaderComponent implements OnInit, AfterViewInit{
   @Input() width:string="300px"
   @Input() height:string="300px"
   isBrowser:boolean=false;
-  @Input() options  = signal({
-    path: 'assets/animations/welcome.json',
-  });
+  @Input() options:AnimationOptions|undefined
+
   @ViewChild("lottieComponent") lottiComponent:LottieComponent| undefined
   constructor(@Inject(PLATFORM_ID) private platformId: any) {
     this.isBrowser = isPlatformBrowser(this.platformId)
@@ -50,9 +49,10 @@ export class LottieLoaderComponent implements OnInit, AfterViewInit{
       if (isPlatformBrowser(this.platformId)){
         // this.loadAnimation();
         // this.lottiComponent.options={}
-        this.options.set({
-          path: this.animationUrl
-        })
+        this.options={
+          path:this.animationUrl
+        }
+       // this.lottiComponent.options=this.options
       }
       }
     }
