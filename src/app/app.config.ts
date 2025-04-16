@@ -1,10 +1,17 @@
 // import '@angular/compiler';
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import {APP_ID, ApplicationConfig, importProvidersFrom, provideZoneChangeDetection} from '@angular/core';
+
 
 import { routes } from './app.routes';
-import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
+import {
+  BrowserModule,
+  provideClientHydration,
+  withEventReplay,
+  withHttpTransferCacheOptions
+} from '@angular/platform-browser';
 import {provideHttpClient} from '@angular/common/http';
+import {provideServerRendering} from '@angular/platform-server';
+import {provideRouter} from '@angular/router';
 // import player from 'lottie-web';
 //
 // // Note: This function must return the player
@@ -12,8 +19,12 @@ import {provideHttpClient} from '@angular/common/http';
 //   return player;
 // }
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes),
-    provideClientHydration(withEventReplay())
+  providers: [provideZoneChangeDetection({ eventCoalescing: true }),
+    provideRouter(routes),
+    provideClientHydration(withEventReplay(), withHttpTransferCacheOptions({}))
     ,provideHttpClient(),
-  ]
+    // {provide:APP_ID,useValue:'serverApp'}
+  ],
+
+
 };
