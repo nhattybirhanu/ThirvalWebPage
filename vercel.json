@@ -3,9 +3,8 @@
   "buildCommand": "npm run vercel-build",
   "outputDirectory": "dist/thrival-web-page/browser",
   "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/api/index.mjs"
-    }
+    { "src": "/api/(.*)", "dest": "/api/$1" },
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/api/index.mjs" }
   ]
 }

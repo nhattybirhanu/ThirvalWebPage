@@ -20,7 +20,8 @@ app.use(express.static(browserDistFolder, {
   redirect: false,
 }));
 
-app.use('/**', (req, res, next) => {
+// Fallback handler: handle all routes not served by static files
+app.use((req, res, next) => {
   angularApp
     .handle(req)
     .then((response) =>
