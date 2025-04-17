@@ -10,7 +10,6 @@
   ],
   "functions": {
     "api/index.mjs": {
-      "runtime": "nodejs22.x",
       "includeFiles": "dist/thrival-web-page/**"
     }
   }
