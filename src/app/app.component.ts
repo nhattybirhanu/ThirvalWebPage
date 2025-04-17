@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, inject, PLATFORM_ID} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import {isPlatformServer} from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -10,4 +11,9 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'ThrivalWebPage';
+  constructor() {
+    const platformId = inject(PLATFORM_ID);
+    const isServer = isPlatformServer(platformId);
+    console.log('Running on', isServer ? 'Server' : 'Browser');
+  }
 }

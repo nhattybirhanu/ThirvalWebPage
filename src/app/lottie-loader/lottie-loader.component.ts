@@ -2,7 +2,7 @@ import {
   AfterViewInit,
   Component,
   computed,
-  CUSTOM_ELEMENTS_SCHEMA, ElementRef, Inject,
+  CUSTOM_ELEMENTS_SCHEMA, ElementRef, inject, Inject,
   input,
   Input,
   InputSignal,
@@ -39,14 +39,15 @@ export class LottieLoaderComponent implements OnInit, AfterViewInit{
   @Input() options:AnimationOptions|undefined
 
   @ViewChild("lottieComponent",{ static:false}) lottiComponent:LottieComponent| undefined
-  constructor(@Inject(PLATFORM_ID) private platformId: any) {
-    this.isBrowser = isPlatformBrowser(this.platformId)
+  constructor() {
+    // this.isBrowser = isPlatformBrowser(this.platformId)
 
   }
 
   ngOnInit(): void {
     if (this.animationUrl){
-       if (isPlatformBrowser(this.platformId))
+      let platformId = inject(PLATFORM_ID)
+      if (isPlatformBrowser(platformId))
       {
         // this.loadAnimation();
         // this.lottiComponent.options={}
@@ -68,7 +69,6 @@ export class LottieLoaderComponent implements OnInit, AfterViewInit{
 
 
   ngAfterViewInit() {
-    this.isBrowser = isPlatformBrowser(this.platformId)
 
 
 

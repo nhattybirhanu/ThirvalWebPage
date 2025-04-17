@@ -1,10 +1,8 @@
 {
   "version": 2,
-  "buildCommand": "npm run vercel-build",
-  "outputDirectory": "dist/thrival-web-page/browser",
+  "buildCommand": "npm run build:ssr",
+  "outputDirectory": "dist/thrival-web-page",
   "routes": [
-    { "src": "/api/(.*)", "dest": "/api/$1" },
-    { "handle": "filesystem" },
-    { "src": "/(.*)", "dest": "/api/index.mjs" }
+    { "src": "/.*", "dest": "/server/server.mjs" }
   ]
 }
