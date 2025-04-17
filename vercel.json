@@ -1,8 +1,11 @@
 {
   "version": 2,
   "buildCommand": "npm run build:ssr",
-  "outputDirectory": "dist/thrival-web-page",
+  "outputDirectory": "dist/thrival-web-page/browser",
   "routes": [
-    { "src": "/.*", "dest": "/server/server.mjs" }
+    {
+      "src": "/(.*)",
+      "dest": "/api/index.mjs"
+    }
   ]
 }
