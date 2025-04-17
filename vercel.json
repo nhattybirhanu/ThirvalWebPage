@@ -6,6 +6,6 @@
     { "source": "/(.*)", "destination": "/api" }
   ],
   "functions": {
-    "api/index.js": { "includeFiles": "dist/thrival-web-page/**" }
+    "api/index.mjs": { "includeFiles": "dist/thrival-web-page/**" }
   }
 }
