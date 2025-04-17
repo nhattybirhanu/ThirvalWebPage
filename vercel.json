@@ -2,7 +2,7 @@
   "version": 2,
   "public": true,
   "functions": {
-    "api/index.mjs": {
+    "api/index.js": {
       "includeFiles": "dist/thrival-web-page/**"
     }
   },
