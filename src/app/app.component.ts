@@ -14,8 +14,8 @@ import { CommonModule } from '@angular/common';  // Import common module for bas
 export class AppComponent {
   title = 'ThrivalWebPage';
   constructor() {
-    const platformId = inject(PLATFORM_ID);
-    const isServer = isPlatformServer(platformId);
-    console.log('Running on', isServer ? 'Server' : 'Browser');
+    // const platformId = inject(PLATFORM_ID);
+    // const isServer = isPlatformServer(platformId);
+    // console.log('Running on', isServer ? 'Server' : 'Browser');
   }
 }

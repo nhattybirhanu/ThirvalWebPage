@@ -37,17 +37,16 @@ export class LottieLoaderComponent implements OnInit, AfterViewInit{
   @Input() height:string="300px"
   isBrowser:boolean=false;
   @Input() options:AnimationOptions|undefined
-
   @ViewChild("lottieComponent",{ static:false}) lottiComponent:LottieComponent| undefined
-  constructor() {
+  constructor(@Inject(PLATFORM_ID) private platformId:any) {
     // this.isBrowser = isPlatformBrowser(this.platformId)
 
   }
 
   ngOnInit(): void {
     if (this.animationUrl){
-      let platformId = inject(PLATFORM_ID)
-      if (isPlatformBrowser(platformId))
+
+      if (isPlatformBrowser(this.platformId))
       {
         // this.loadAnimation();
         // this.lottiComponent.options={}
