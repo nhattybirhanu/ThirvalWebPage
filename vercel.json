@@ -12,5 +12,6 @@
       "destination": "/api"
     }
   ],
-  "buildCommand": "npm run build:ssr"
+  "buildCommand": "npm run build:ssr",
+  "outputDirectory": "dist/thrival-web-page"
 }
