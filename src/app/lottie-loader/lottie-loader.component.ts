@@ -46,7 +46,7 @@ export class LottieLoaderComponent implements OnInit, AfterViewInit{
 
   ngOnInit(): void {
     if (this.animationUrl){
-      // if (isPlatformBrowser(this.platformId))
+       if (isPlatformBrowser(this.platformId))
       {
         // this.loadAnimation();
         // this.lottiComponent.options={}
