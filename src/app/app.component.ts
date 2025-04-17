@@ -1,13 +1,15 @@
 import {Component, inject, PLATFORM_ID} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {isPlatformServer} from '@angular/common';
+import { CommonModule } from '@angular/common';  // Import common module for basic functionality
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  standalone:true
+  standalone:true,
+  imports: [CommonModule, RouterOutlet],  // Import necessary modules here
+
 })
 export class AppComponent {
   title = 'ThrivalWebPage';
