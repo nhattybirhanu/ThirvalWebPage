@@ -47,7 +47,7 @@
             "server": "src/main.server.ts",
             "outputMode": "server",
             "ssr": {
-              "entry": "src/serve.ts"
+              "entry": "src/server.ts"
             }
           },
           "configurations": {
