@@ -39,7 +39,7 @@ export class LottieLoaderComponent implements OnInit, AfterViewInit{
   @Input() options:AnimationOptions|undefined
   @ViewChild("lottieComponent",{ static:false}) lottiComponent:LottieComponent| undefined
   constructor(@Inject(PLATFORM_ID) private platformId:any) {
-    // this.isBrowser = isPlatformBrowser(this.platformId)
+    this.isBrowser = isPlatformBrowser(this.platformId)
 
   }
 

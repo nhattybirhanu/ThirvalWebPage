@@ -17,12 +17,10 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-                   "outputPath": "dist/thrival-web-page",
+            "outputPath": "dist/thrival-web-page/",
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -31,27 +29,24 @@
                 "input": "public"
               },
               "src/assets"
-
             ],
-            "allowedCommonJsDependencies": [
-              "lotti-web"
-            ],
+            "prerender": {
+              "discoverRoutes": false,
+              "routesFile": "src/prerender-routes.txt"
+            },
+            "allowedCommonJsDependencies": ["lottie-web"],
             "styles": [
               "src/styles.scss",
               "src/app-framework.scss",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-
               "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
             ],
             "scripts": [],
-            "server": "src/main.server.ts",
-            "outputMode": "server",
-            "ssr": {
-              "entry": "src/server.ts"
-            }
+            "server": "src/main.server.ts"
           },
           "configurations": {
             "production": {
+              "outputHashing": "all",
               "budgets": [
                 {
                   "type": "initial",
@@ -63,13 +58,12 @@
                   "maximumWarning": "4kB",
                   "maximumError": "8kB"
                 }
-              ],
-              "outputHashing": "all"
+              ]
             },
             "development": {
+              "sourceMap": true,
               "optimization": false,
-              "extractLicenses": false,
-              "sourceMap": true
+              "extractLicenses": false
             }
           },
           "defaultConfiguration": "production"
@@ -83,43 +77,18 @@
           },
           "configurations": {
             "production": {
-              "outputHashing": "media",
+              "optimization": true,
               "sourceMap": false,
-              "optimization": true
+              "outputHashing": "media"
             },
             "development": {
-              "sourceMap": true,
-              "optimization": false
+              "optimization": false,
+              "sourceMap": true
             }
           },
           "defaultConfiguration": "production"
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n"
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
-            "tsConfig": "tsconfig.spec.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
-            ],
-            "styles": [
-              "src/styles.scss"
-            ],
-            "scripts": []
-          }
-        },
 
-
+        },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
@@ -132,8 +101,27 @@
             "development": {
               "buildTarget": "thrival-web-page:build:development"
             }
-          },
-          "defaultConfiguration": "development"
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "tsconfig.spec.json",
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "public",
+                "output": "/"
+              }
+            ],
+            "styles": ["src/styles.scss"],
+            "scripts": []
+          }
         },
         "prerender": {
           "builder": "@angular-devkit/build-angular:prerender",
@@ -142,9 +130,14 @@
             "serverTarget": "thrival-web-page:server:production",
             "routesFile": "src/app.routes.server.ts"
           }
+        },
+        "build:ssr": {
+          "builder": "@angular-devkit/build-angular:ssr-dev-server",
+          "options": {
+            "browserTarget": "thrival-web-page:build:production",
+            "serverTarget": "thrival-web-page:server:production"
+          }
         }
-
-
       }
     }
   },
