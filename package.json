@@ -17,7 +17,7 @@
     "deploy": "vercel --prod",
     "postbuild:ssr": "cp src/server.mjs dist/thrival-web-page/server/server.mjs",
     "vercel-build": "npm run build:ssr && npm run postbuild:ssr",
-    "build-start": "npm run generate:routes && ng build && ng serve"
+    "build-start": "npm run generate:routes && ng build"
   },
   "private": true,
   "dependencies": {
