@@ -8,7 +8,7 @@
     "build:ssr": "npm run generate:routes && ng build --configuration production && ng run thrival-web-page:server:production && npm run postbuild:ssr",
     "serve:ssr": "node dist/thrival-web-page/server/main.mjs",
     "dev:ssr": "npm run build:ssr && npm run serve:ssr",
-    "start": "node dist/thrival-web-page/server/main.mjs",
+    "start": "node dist/thrival-web-page/server/server.mjs",
     "heroku-postbuild": "npm run build:ssr",
     "local:ssr": "ng build --watch",
     "nodemon": "nodemon",
