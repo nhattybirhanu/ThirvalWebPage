@@ -4,10 +4,10 @@
   "buildCommand": "npm run build:ssr",
   "public": true,
   "outputDirectory": "dist/thrival-web-page/browser",
-  "routes": [
+  "rewrites": [
     {
-      "src": "/.*",
-      "dest": "dist/thrival-web-page/server/main.js"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
