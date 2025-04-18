@@ -5,7 +5,7 @@
     "start-local": "ng serve",
     "ng": "ng",
     "build": "npm run build:ssr",
-    "build:ssr": "npm run generate:routes && ng build --configuration production && ng run thrival-web-page:server:production",
+    "build:ssr": "npm run generate:routes && ng build --configuration production && ng run thrival-web-page:server:production && npm run postbuild:ssr",
     "serve:ssr": "node dist/thrival-web-page/server/main.mjs",
     "dev:ssr": "npm run build:ssr && npm run serve:ssr",
     "start": "node dist/thrival-web-page/server/main.mjs",
