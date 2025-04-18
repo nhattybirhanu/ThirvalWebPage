@@ -1,18 +1,7 @@
 {
 
   "version": 2,
-  "buildCommand": "npm run build-start",
+  "buildCommand": "npm run build:ssr",
   "public": true,
-  "name": "Thrival",
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/api/"
-    }
-  ],
-  "functions": {
-    "api/index.mjs": {
-      "includeFiles": "dist/thrival-web-page/**"
-    }
-  }
+  "name": "Thrival"
 }
