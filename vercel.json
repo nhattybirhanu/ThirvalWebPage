@@ -1,22 +1,8 @@
 {
   "version": 2,
-  "public": true,
   "buildCommand": "npm run build:ssr",
   "outputDirectory": "dist/thrival-web-page",
-  "builds": [
-    {
-      "src": "dist/thrival-web-page/server/server.mjs",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "dist/thrival-web-page/browser/**",
-      "use": "@vercel/static"
-    }
-  ],
   "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "dist/thrival-web-page/server/server.mjs"
-    }
+    { "src": "/.*", "dest": "/server/server.mjs" }
   ]
 }
