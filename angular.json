@@ -30,7 +30,10 @@
               },
               "src/assets"
             ],
-
+            "prerender": {
+              "discoverRoutes": false,
+              "routesFile": "src/prerender-routes.txt"
+            },
             "allowedCommonJsDependencies": ["lottie-web"],
             "styles": [
               "src/styles.scss",

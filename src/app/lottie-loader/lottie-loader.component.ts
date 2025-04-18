@@ -73,15 +73,7 @@ export class LottieLoaderComponent implements OnInit, AfterViewInit{
 
   }
  async loadAnimation(){
-    const lottie = await import('lottie-web');
-    let lottieAnimation= lottie.default.loadAnimation({
-      container: this.containerRef!.nativeElement,
-      renderer: 'svg',
-      loop: true,
-      autoplay: true,
-      path: this.animationUrl || 'assets/animations/welcome.json',
 
-    });
   }
   // options():Signal<AnimationOptions> {
   //   return {

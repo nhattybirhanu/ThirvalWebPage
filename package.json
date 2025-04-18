@@ -8,17 +8,17 @@
     "build:ssr": "npm run generate:routes && ng build --configuration production && ng run thrival-web-page:server:production",
     "serve:ssr": "node dist/thrival-web-page/server/main.mjs",
     "dev:ssr": "npm run build:ssr && npm run serve:ssr",
-    "vercel-build": "npm run build:ssr",
     "start": "node dist/thrival-web-page/server/main.mjs",
     "heroku-postbuild": "npm run build:ssr",
     "local:ssr": "ng build --watch",
     "nodemon": "nodemon",
     "generate:routes": "node ./generate-prerender-routes.mjs",
-
     "prerender": "ng run thrival-web-page:prerender",
-    "deploy": "vercel --prod"
-  }
-,
+    "deploy": "vercel --prod",
+    "postbuild:ssr": "cp src/server.mjs dist/thrival-web-page/server/server.mjs",
+    "vercel-build": "npm run build:ssr && npm run postbuild:ssr"
+
+  },
   "private": true,
   "dependencies": {
     "@angular/common": "^19.2.0",
@@ -48,6 +48,7 @@
     "@types/express": "^4.17.17",
     "@types/jasmine": "~5.1.0",
     "@types/node": "^18.18.0",
+    "@vercel/node": "^5.1.14",
     "browser-sync": "^3.0.4",
     "jasmine-core": "~5.6.0",
     "karma": "~6.4.0",
