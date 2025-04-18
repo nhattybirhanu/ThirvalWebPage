@@ -1,13 +1,12 @@
 {
   "version": 2,
   "public": true,
-
+  "buildCommand": "npm run build:ssr",
+  "outputDirectory": "dist/thrival-web-page/browser",
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/api"
+      "destination": "/index.html"
     }
-  ],
-  "buildCommand": "npm run build:ssr",
-  "outputDirectory": "dist/thrival-web-page"
+  ]
 }
