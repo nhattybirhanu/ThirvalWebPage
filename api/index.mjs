@@ -10,6 +10,6 @@
 //   return app(req, res);
 // };
 // api/index.mjs
-import handler from '../dist/thrival-web-page/server/server.mjs';
+import handler from '../dist/thrival-web-page/server/main.js';
 
 export default handler;
