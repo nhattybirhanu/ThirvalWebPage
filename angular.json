@@ -141,7 +141,7 @@
           "builder": "@angular-devkit/build-angular:ssr",
           "options": {
             "browserTarget": "thrival-web-page:build:production",
-            "serverTarget": "thrival-web-page:server:production",
+            "serverTarget": "thrival-web-page:server:production"
 
           }
         }
