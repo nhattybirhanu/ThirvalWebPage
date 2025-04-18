@@ -1,12 +1,18 @@
 {
+
   "version": 2,
   "buildCommand": "npm run build:ssr",
-  "outputDirectory": "dist/thrival-web-page",
-
-  "routes": [
+  "public": true,
+  "name": "Thrival",
+  "rewrites": [
     {
-      "src": "/(.*)",
-      "dest": "/src/server.mjs"
+      "source": "/(.*)",
+      "destination": "/api"
     }
-  ]
+  ],
+  "functions": {
+    "api/index.js": {
+      "includeFiles": "dist/thrival-web-page/**"
+    }
+  }
 }
