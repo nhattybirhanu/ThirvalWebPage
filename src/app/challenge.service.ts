@@ -24,6 +24,10 @@ export class ChallengeService {
   getChallengeTitles():Observable<string[]>{
     return this.httpClient.get<string[]>(`${environment.BASE_URL}/challenges/slugs`)
   }
+  getTrending():Observable<Trending> {
+    return this.httpClient.get<Trending>(`${environment.BASE_URL}/trending`)
+
+  }
 
   async getIds() {
     return await lastValueFrom(this.getChallengeTitles());
@@ -106,4 +110,7 @@ export interface ChallengeCategory{
 export interface ChallengeCategoryPackList{
   category:ChallengeCategory,
   challengePacks:ChallengePack[]
+}
+export interface Trending{
+  challengeCategoryPackLists:ChallengeCategoryPackList[]
 }

@@ -1,0 +1,27 @@
+/* src/pages/privacy/privacy.component.css */
+
+.privacy-page {
+    background: #f8fcff;
+}
+
+.privacy-page h1 {
+    color: #2065d1;
+}
+
+.privacy-page p,
+.privacy-page li {
+    line-height: 1.6;
+}
+
+.privacy-page ol ol {
+    margin-top: .5rem;
+    margin-left: 1.5rem;
+}
+
+.privacy-page a {
+    color: #2065d1;
+    text-decoration: none;
+}
+.privacy-page a:hover {
+    text-decoration: underline;
+}

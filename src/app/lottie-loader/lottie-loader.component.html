@@ -1,7 +1,10 @@
 <!--<div #lottieContainer style="width:300px; height:300px;"></div>-->
 <!--<div  #lottieContainer [style]="buildStyle([buildCssProperty('width',width),buildCssProperty('height',height),buildCssProperty('display',isBrowser?'block':'none')])"></div>-->
-<img  *ngIf="!isBrowser&&image" [src]="image" [style]="buildStyle([buildCssProperty('width',width),buildCssProperty('height',height)])"/>
-<div *ngIf="options&&isBrowser">
-  <ng-lottie #lottieComponent [options]="options"></ng-lottie>
+<div style="height: 100%">
+  <img  *ngIf="!isBrowser&&image" [src]="image" />
+  <div style="height: 100%" *ngIf="options&&isBrowser">
+    <ng-lottie #lottieComponent [options]="options"></ng-lottie>
+
+  </div>
 
 </div>

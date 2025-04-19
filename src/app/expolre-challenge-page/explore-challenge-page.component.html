@@ -1,22 +1,54 @@
-<div class="container p-6">
-  <app-hero
-    class="mb-5"
-    [title]="pageTitle"
-    [subtitle]="pageDescription">
+<!--<div class="container p-6">-->
 
-  </app-hero>
-  <div class="row margin-lg" id="ex_row_cat">
-    <div *ngFor="let category of categoriesChallenges" [routerLink]="'explore/'+category.slug" class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-      <div class="card h-100 shadow-sm border-info card-hover"   [style]="buildStyle([buildCssProperty('background-color','#1F2937')])" >
-        <app-lottie-loader *ngIf="category.media" [width]="'100%'" [animationUrl]="category.media.animationUrl" [image]="category.media.imageUrl" class="card-img-top"  />
-        <div class="card-body d-flex flex-column   " >
-          <h5 class="card-title" [style]="buildStyle([buildCssProperty('color','white')])" >{{ category.name }}</h5>
-          <p class="card-text  small flex-grow-1" [style]="buildStyle([buildCssProperty('color','white')])">{{ category.description }}</p>
-          <button (click)="openCategoriesDetail(category.slug)"  class="btn btn-light">{{ category.count }} challenges</button>
-        </div>
+<!--  <div class="row margin-lg" id="ex_row_cat">-->
+<!--    <div *ngFor="let category of categoriesChallenges" [routerLink]="'explore/'+category.slug" class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">-->
+<!--      <div class="card h-100 shadow-sm border-info card-hover"   [style]="buildStyle([buildCssProperty('background-color','#1F2937')])" >-->
+<!--        <app-lottie-loader *ngIf="category.media" [width]="'100%'" [animationUrl]="category.media.animationUrl" [image]="category.media.imageUrl" class="card-img-top"  />-->
+<!--        <div class="card-body d-flex flex-column   " >-->
+<!--          <h5 class="card-title" [style]="buildStyle([buildCssProperty('color','white')])" >{{ category.name }}</h5>-->
+<!--          <p class="card-text  small flex-grow-1" [style]="buildStyle([buildCssProperty('color','white')])">{{ category.description }}</p>-->
+<!--          <button (click)="openCategoriesDetail(category.slug)"  class="btn btn-light">{{ category.count }} challenges</button>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--</div>-->
+<section class="py-5 bg-transparent">
+  <div class="container">
+
+    <!-- Category Filter Bar -->
+    <div class="d-flex flex-wrap justify-content-center mb-4">
+      <button
+        class="btn btn-sm me-2 mb-2"
+        [class.btn-outline-secondary]="selectedCategory"
+        [class.btn-primary-custom]="!selectedCategory"
+        (click)="selectCategory()"
+      >All</button>
+
+      <button
+        *ngFor="let cat of categories"
+        class="btn btn-sm me-2 mb-2"
+        [class.btn-outline-secondary]="!selectedCategory || selectedCategory.id!==cat.id"
+        [class.btn-primary-custom]="selectedCategory&& selectedCategory.id===cat.id"
+        (click)="selectCategory(cat)"
+      >
+        {{ cat.name }}
+      </button>
+    </div>
+
+    <h2 class="mb-4 text-center animate__animated animate__fadeInDown">
+      Trending Challenges
+      <small class="text-muted" *ngIf="selectedCategory">
+        in {{ selectedCategory.name }}
+      </small>
+    </h2>
+
+    <div class="row g-4">
+      <div class="col-12 col-sm-6 col-md-4" *ngFor="let c of filtered">
+        <app-challenge-pack-item [challengePack]="c"></app-challenge-pack-item>
       </div>
     </div>
-  </div>
-  <app-footer></app-footer>
 
-</div>
+  </div>
+</section>

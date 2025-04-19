@@ -1,0 +1,27 @@
+/* src/pages/categories-detail/category-detail.component.css */
+
+/* Pastel badge for primary counts */
+.bg-primary-custom {
+  background-color: #74c0fc !important;
+}
+
+/* Card styling */
+.card-custom {
+  background-color: var(--card-bg) !important;
+  border-top: 4px solid #a5d8ff;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.card-custom:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+
+/* Delay helpers for Animate.css */
+.animate__delay-1s { animation-delay: 0.1s; }
+.animate__delay-2s { animation-delay: 0.2s; }
+.animate__delay-3s { animation-delay: 0.3s; }
+.animate__delay-4s { animation-delay: 0.4s; }
+.animate__delay-5s { animation-delay: 0.5s; }
+.animate__delay-6s { animation-delay: 0.6s; }

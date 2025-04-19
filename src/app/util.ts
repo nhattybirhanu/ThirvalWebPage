@@ -8,3 +8,9 @@ export function slugify(text: string): string {
     .replace(/\s+/g, '-')              // Replace spaces with hyphens
     .replace(/-+/g, '-');              // Collapse multiple hyphens
 }
+export function randomIntFromInterval(min:number, max:number) { // min and max included
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+export function changesToK(number:number){
+  return `${Math.floor(number/1000)}k+`
+}

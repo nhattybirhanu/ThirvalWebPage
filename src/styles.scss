@@ -1,106 +1,251 @@
-/* You can add global styles to this file, and also import other style files */
-/* Modern CSS Reset and Global Styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-
-}
+/*––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+/* CORE VARIABLES & THEMES                                                                 */
+/*––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+@import 'bootstrap/dist/css/bootstrap.min.css';
+/* Light‑mode palette */
 :root {
-  /* Colors */
-  --primary-color: #4F46E5; /* Electric Blue */
-  --secondary-color: #FF6A00; /* Thrival Orange */
-  --accent-color: #FF00C8; /* Vivid Pink */
-  --text-color: #ffffff; /* White for text */
-  --background-color: #121212; /* Dark background */
-  --hover-color: #ff5722; /* Button hover color */
-  --border-radius: 8px; /* General border radius */
-  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Box shadow */
-  --font-primary: 'Montserrat', sans-serif;
-  --font-secondary: 'Roboto', sans-serif;
-  --card-background: rgba(18, 18, 18, 0.9); /* Dark charcoal with slight transparency */
-  --card-border-color: #00B0FF; /* Electric Blue border */
-  --card-hover-color: #FF00C8; /* Vivid Pink hover effect */
-  --card-shadow: 0 4px 15px rgba(0, 176, 255, 0.2);
+  --bg: #f9fafb;
+  --text: #212529;
+  --muted: #6c757d;
+  --primary: #2065d1;
+  --card-bg: #ffffff;
+  --gradient-light-start: #e0f7ff;
+  --gradient-light-end:   var(--bg);
+  --gradient-blue-start:  #cfe9ff;
+  --gradient-blue-end:    #ffffff;
 }
 
-.hero-animation-box{
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-.overlay {
-  position: relative;
-  padding-bottom: 60px; /* add space at the bottom */
-}
-
-.overlay .lottie-position {
-  position: absolute;
-  top: 55%; /* adjust how far up from the bottom */
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.margin-sm{
-  margin: 6px;
-}
-.margin-m{
-  margin: 12px;
+/* Dark‑mode palette */
+.dark-mode {
+  --bg: #121212;
+  --text: #e0e0e0;
+  --muted: #adb5bd;
+  --primary: #74c0fc;
+  --card-bg: #1e1e1e;
+  --gradient-light-start: #2a2a2a;
+  --gradient-light-end:   #121212;
+  --gradient-blue-start:  #1e1e2e;
+  --gradient-blue-end:    #2e2e3a;
 
 }
-.margin-lg{
-  margin: 18px;
+/* Text colors */
+.dark-mode .text-dark   { color: var(--text)   !important; }
+.dark-mode .text-muted  { color: var(--muted)  !important; }
 
+/* Backgrounds */
+.dark-mode .bg-white     { background-color: var(--card-bg) !important; }
+.dark-mode .navbar-light  { background-color: var(--card-bg) !important; }
+
+/* Any inline or literal whites (fallback) */
+.dark-mode [style*="background"][style*="#fff"] {
+  background-color: var(--card-bg) !important;
 }
-.chip{
-  font-size: larger;
+.dark-mode .navbar,
+.dark-mode .navbar-light {
+  background-color: var(--card-bg) !important;
 }
-.container-with-lottie {
-  position: relative;
-  width: 100%;
-  height: 50vh; /* or any height you need */
-  overflow: hidden;
-  background-color: var(--primary-color);
+.dark-mode .navbar-light .navbar-brand,
+.dark-mode .navbar-light .nav-link {
+  color: var(--text) !important;
+}
+.dark-mode .navbar-light .nav-link:hover,
+.dark-mode .navbar-light .nav-link.active {
+  color: var(--primary) !important;
 }
 
-.lottie-bg {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100%;
+/* All cards + custom cards + stats */
+.dark-mode .card,
+.dark-mode .card-custom,
+.dark-mode .metric-card {
+  background-color: var(--card-bg) !important;
+  border-color: transparent !important;
+}
+
+/* Card text */
+.dark-mode .card-title,
+.dark-mode .card-text,
+.dark-mode .list-group-item {
+  color: var(--text) !important;
+}
+
+/* List‑group items (ChallengeList) */
+.dark-mode .list-group-item {
+  background-color: var(--card-bg) !important;
+  border-color: var(--muted) !important;
+}
+
+/* Feature icons in circles */
+.dark-mode .feature-icon {
+  background-color: var(--card-bg) !important;
+  color: var(--primary) !important;
+}
+
+/* Challenge categories cards */
+.dark-mode .card h6.card-title {
+  color: var(--text) !important;
+}
+
+/* Override any lingering bg-white */
+.dark-mode .bg-white {
+  background-color: var(--card-bg) !important;
+}
+
+/* Override static white gradients (fallback) */
+.dark-mode [style*="background: #ffffff"],
+.dark-mode [style*="background: white"] {
+  background-color: var(--card-bg) !important;
+}
+/*––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+/* NAVBAR TEXT COLOR OVERRIDES FOR DARK MODE                                          */
+/*––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+.dark-mode .navbar-light .navbar-brand,
+.dark-mode .navbar-light .nav-link {
+  color: var(--text) !important;    /* use your --text variable (light in dark mode) */
+}
+
+.dark-mode .navbar-light .nav-link:hover,
+.dark-mode .navbar-light .nav-link.active {
+  color: var(--primary) !important; /* accent hover/active color */
+}
+
+/* Invert the toggler icon for dark backgrounds */
+.dark-mode .navbar-light .navbar-toggler-icon {
+  filter: invert(1) brightness(1.2);
+}
+
+/*––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+/* GLOBAL STYLES                                                                            */
+/*––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+
+html,body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--bg);
+  //color: var(--text);
+  transition: background-color .3s, color .3s;
+  min-height: 100vh;
+  padding: 0;
+width: 100%;
   height: 100%;
-  transform: translate(-50%, -50%);
-  z-index: 0;
-  pointer-events: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
 }
 
-.content {
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode h3,
+.dark-mode h4,
+.dark-mode h5,
+.dark-mode h6 {
+  color: var(--text) !important;
+}
+
+.lead,
+.text-secondary {
+  color: var(--muted) !important;
+}
+
+/*––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+/* GRADIENT UTILITIES                                                                       */
+/*––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+
+.bg-gradient-light {
+  background: radial-gradient(
+      circle at top left,
+      var(--gradient-light-start) 0%,
+      var(--gradient-light-end)   80%
+  ) !important;
+}
+
+.bg-gradient-blue {
+  background: radial-gradient(
+      circle at 20% 20%,
+      var(--gradient-blue-start) 0%,
+      var(--gradient-blue-end)   80%
+  ) !important;
+}
+
+
+/*––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+/* CARD & COMPONENT BACKGROUNDS                                                              */
+/*––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+
+.card,
+.metric-card {
+  background-color: var(--card-bg) !important;
+}
+
+/*––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+/* BOOTSTRAP OVERRIDES                                                                        */
+/*––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+
+/* Primary outline buttons */
+.btn-outline-primary {
+  border-color: var(--primary) !important;
+  color: var(--primary) !important;
+}
+.btn-outline-primary:hover {
+  background-color: var(--primary) !important;
+  color: var(--card-bg) !important;
+}
+
+/* Form control focus */
+.form-control:focus {
+  box-shadow: 0 0 0 0.2rem rgba(32, 101, 209, 0.25);
+  border-color: var(--primary);
+}
+
+/*––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+/* ADDITIONAL UTILITIES                                                                      */
+/*––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+
+/* Gradient helper (light blue circles) */
+.section-decoration {
   position: relative;
-  z-index: 1;
-  padding: 1rem;
-  color: white;
-  text-align: center;
-
 }
-.overlay-color {
+.section-decoration::before,
+.section-decoration::after {
+  content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background:  #4F46E5;
-
-  z-index: 0;
+  border-radius: 50%;
   opacity: 0.3;
 }
-.card-hover {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.section-decoration::before {
+  width: 200px; height: 200px;
+  background: rgba(32,101,209,0.2);
+  top: -50px; left: -50px;
 }
-.card-hover:hover {
-  transform: translateY(-15px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+.section-decoration::after {
+  width: 150px; height: 150px;
+  background: rgba(74,188,252,0.2);
+  bottom: -40px; right: -30px;
+}
+
+/* Mobile‑first heading resize */
+@media (max-width: 576px) {
+  h1.display-4 { font-size: 2rem; }
+  .lead { font-size: 1rem; }
+}
+/* override Bootstrap’s bg-white in dark mode */
+.dark-mode .bg-white {
+  background-color: var(--card-bg) !important;
+}
+
+/* also catch any literal white backgrounds */
+.dark-mode [style*="#ffffff"] {
+  background-color: var(--card-bg) !important;
+}
+footer hr {
+  border-color: var(--muted) !important;  /* or var(--gradient-light-start) */
+}
+:root > app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }

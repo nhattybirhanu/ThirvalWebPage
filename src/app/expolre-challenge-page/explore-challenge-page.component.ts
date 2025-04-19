@@ -1,12 +1,13 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {HeroComponent} from '../components/hero/hero.component';
-import {CategoryChallenge, ChallengeCategory, ChallengeService} from '../challenge.service';
+import {CategoryChallenge, ChallengeCategory, ChallengeCategoryPackList, ChallengeService} from '../challenge.service';
 import {NgForOf, NgIf} from '@angular/common';
 import {FooterComponent} from '../components/footer/footer.component';
 import {buildCssProperty, buildStyle, ColorSchema, ColorService} from '../color.service';
 import {inspect} from 'util';
 import {LottieLoaderComponent} from '../lottie-loader/lottie-loader.component';
 import {Router, RouterLink} from '@angular/router';
+import {ChallengePackItemComponent} from '../component/challenge-pack-item/challenge-pack-item.component';
 
 @Component({
   selector: 'app-explore-challenge-page',
@@ -16,7 +17,8 @@ import {Router, RouterLink} from '@angular/router';
     NgIf,
     FooterComponent,
     LottieLoaderComponent,
-    RouterLink
+    RouterLink,
+    ChallengePackItemComponent
   ],
   templateUrl: './explore-challenge-page.component.html',
   styleUrl: './explore-challenge-page.component.scss',
@@ -28,7 +30,9 @@ export class ExploreChallengePageComponent implements OnInit{
   @Input() pageDescription: string = 'Discover themed challenges for your journey.';
   @Input() pageImage?: string;
   categoriesChallenges:ChallengeCategory[] =[]
-
+    trendingChallengePackList:ChallengeCategoryPackList[]=[]
+  categories:ChallengeCategory []=[]
+  selectedCategory:ChallengeCategory | undefined
   defaultCardSchema:ColorSchema={
     background:"#1F2937",
     primaryText:"#d4d4d4",
@@ -43,6 +47,10 @@ export class ExploreChallengePageComponent implements OnInit{
     this.challengeService.getCategories().subscribe(value => {
       console.log("ChallengeCategory ",value)
       this.categoriesChallenges=value;
+    })
+    this.challengeService.getTrending().subscribe(value => {
+      this.trendingChallengePackList=value.challengeCategoryPackLists;
+      this.categories = this.trendingChallengePackList.map(value1 => value1.category)
     })
   }
 async  loadColorSchema(){
@@ -69,4 +77,13 @@ async  loadColorSchema(){
 
   protected readonly buildStyle = buildStyle;
   protected readonly buildCssProperty = buildCssProperty;
+
+  selectCategory(selected?: ChallengeCategory) {
+  this.selectedCategory=selected;
+  }
+  get filtered() {
+    return (!this.selectedCategory)
+      ? this.trendingChallengePackList.flatMap(value => value.challengePacks)
+      : this.trendingChallengePackList.find(c => c.category.id === this.selectedCategory!.id)?.challengePacks || [];
+  }
 }

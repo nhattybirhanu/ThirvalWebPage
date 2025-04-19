@@ -1,21 +1,29 @@
-.challenges-section{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+/* src/pages/pack-detail/challenge-pack-detail.component.css */
 
-
+/* Make images cover their ratio box */
+.object-fit-cover {
+  object-fit: cover;
 }
-.detail-card{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  /*border: 2px solid #ffffff;*/
-  border-radius: 8px;
-  width: 40vw;
-  padding: 18px;
-  min-width: 400px;
-  box-shadow: 0 4px 6px rgba(99, 102, 241, 0.2);
 
+/* Pastel badge for tags */
+.bg-primary-custom {
+  background-color: #74c0fc !important;
 }
+
+/* Ensure list‑group items have comfy spacing */
+.list-group-item {
+  background-color: var(--card-bg) !important;
+  border: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.list-group-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* Animate.css delay helpers (1s–5s) */
+.animate__delay-1s { animation-delay: 0.1s; }
+.animate__delay-2s { animation-delay: 0.2s; }
+.animate__delay-3s { animation-delay: 0.3s; }
+.animate__delay-4s { animation-delay: 0.4s; }
+.animate__delay-5s { animation-delay: 0.5s; }

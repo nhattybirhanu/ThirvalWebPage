@@ -1,5 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {ChallengeCategoryPackList, ChallengeService, Media} from '../challenge.service';
+import {
+  ChallengeCategory,
+  ChallengeCategoryPackList,
+  ChallengePack,
+  ChallengeService,
+  Media
+} from '../challenge.service';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {NgForOf, NgIf} from '@angular/common';
 import {FooterComponent} from '../components/footer/footer.component';
@@ -8,6 +14,7 @@ import {LottieLoaderComponent} from '../lottie-loader/lottie-loader.component';
 import {buildCssProperty, buildStyle} from '../color.service';
 import {slugify} from '../util';
 import {MetadataResolver} from '../MetadataResolver';
+import {ChallengePackItemComponent} from '../component/challenge-pack-item/challenge-pack-item.component';
 
 @Component({
   selector: 'app-category-challenge-detail',
@@ -17,14 +24,22 @@ import {MetadataResolver} from '../MetadataResolver';
     HeroComponent,
     LottieLoaderComponent,
     NgForOf,
-    RouterLink
+    RouterLink,
+    ChallengePackItemComponent
   ],
   templateUrl: './category-challenge-detail.component.html',
-  styleUrl: './category-challenge-detail.component.scss',
+  styleUrls: ['./category-challenge-detail.component.scss'],
   standalone:true,
 })
 export class CategoryChallengeDetailComponent implements OnInit{
   categoryChallengePacks:ChallengeCategoryPackList | undefined;
+  packs: ChallengePack[] = [];
+  category!: ChallengeCategory | undefined;
+
+  // pagination
+  page = 1;
+  pageSize = 6;
+  totalPages = 1;
   constructor(private challengeService:ChallengeService, private activeRoute:ActivatedRoute, private router:Router,
               private metaResolver:MetadataResolver
               ) {
@@ -36,6 +51,12 @@ export class CategoryChallengeDetailComponent implements OnInit{
       if (slug){
       this.challengeService.getCategoryChallengePack(slug).subscribe(challengeCategory => {
         this.categoryChallengePacks=challengeCategory;
+        if (this.categoryChallengePacks){
+          this.category=this.categoryChallengePacks.category
+          this.packs = this.categoryChallengePacks.challengePacks
+          this.totalPages = Math.ceil(this.packs.length / this.pageSize);
+
+        }
         this.metaResolver.applyMetaData({
           title:challengeCategory.category.name,
           description:challengeCategory.category.description,
@@ -51,6 +72,17 @@ export class CategoryChallengeDetailComponent implements OnInit{
 
     })
   }
+  get pagedPacks() {
+    const start = (this.page - 1) * this.pageSize;
+    return this.packs.slice(start, start + this.pageSize);
+  }
+
+  goTo(page: number) {
+    if (page < 1 || page > this.totalPages) return;
+    this.page = page;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
 
 
   protected readonly buildStyle = buildStyle;

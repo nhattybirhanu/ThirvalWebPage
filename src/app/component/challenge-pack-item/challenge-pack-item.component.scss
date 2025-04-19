@@ -1,0 +1,37 @@
+/* Ensure the image covers the ratio box */
+.object-fit-cover {
+  object-fit: cover;
+}
+
+/* Card styling (pastel accent + lift on hover) */
+.card-custom {
+  background-color: var(--card-bg) !important;
+  border-top: 4px solid #a5d8ff;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.card-custom:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+
+/* Primary button (View) */
+.btn-primary-custom {
+  background-color: #74c0fc;
+  border-color: #74c0fc;
+  color: #fff;
+}
+.btn-primary-custom:hover {
+  background-color: #4dabf7;
+}
+
+/* Small share button styling */
+.btn-outline-secondary {
+  border-color: var(--muted) !important;
+  color: var(--muted) !important;
+}
+.btn-outline-secondary:hover {
+  background-color: var(--muted) !important;
+  color: var(--card-bg) !important;
+}

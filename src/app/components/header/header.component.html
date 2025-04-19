@@ -1,0 +1,42 @@
+<nav
+  class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top top-0"
+  [class.py-2]="!scrolled"
+  [class.py-1]="scrolled"
+>
+  <div class="container">
+    <a class="navbar-brand fw-bold" routerLink="/">Thrival</a>
+    <div class="px-3">
+      <button
+
+        class="navbar-toggler"
+        type="button"
+        aria-label="Toggle navigation"
+        (click)="toggleMenu()"
+      >
+        <i *ngIf="!menuOpen" class="bi bi-list fs-3"></i>
+        <i *ngIf=" menuOpen" class="bi bi-x-lg fs-3"></i>
+      </button>
+    </div>
+
+    <!-- add #navCollapse ref -->
+    <div class="collapse navbar-collapse" id="navMenu" #navCollapse>
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/home" (click)="closeNav()">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/explore" (click)="closeNav()">Explore</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/features" (click)="closeNav()">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/categories" (click)="closeNav()">Categories</a>
+        </li>
+      </ul>
+      <div class="d-flex align-items-center">
+        <app-dark-mode-toggle class="me-3" (click)="closeNav()"></app-dark-mode-toggle>
+      </div>
+    </div>
+  </div>
+</nav>

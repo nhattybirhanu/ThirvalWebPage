@@ -1,0 +1,24 @@
+.hero-section {
+    min-height: 85vh;
+    padding-top: 6rem;
+    padding-bottom: 4rem;
+    background-color: var(--card-bg);
+
+}
+
+.btn-primary-custom {
+    background-color: #74c0fc;
+    border-color: #74c0fc;
+    color: #fff;
+}
+.btn-primary-custom:hover {
+    background-color: #4dabf7;
+    border-color: #4dabf7;
+}
+.bg-gradient-blue {
+    background: radial-gradient(
+            circle at 20% 20%,
+            var(--gradient-blue-start) 0%,
+            var(--gradient-blue-end)   80%
+    ) !important;
+}

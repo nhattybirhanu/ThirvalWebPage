@@ -8,7 +8,8 @@ import {RouterLink} from '@angular/router';
   imports: [
     RouterLink
   ],
-  templateUrl: 'footer.component.html'
+  templateUrl: 'footer.component.html',
+  styleUrls:['footer.component.css']
 })
 export class FooterComponent {
   protected readonly buildCssProperty = buildCssProperty;

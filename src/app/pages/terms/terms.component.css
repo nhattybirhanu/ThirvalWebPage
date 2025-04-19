@@ -1,0 +1,32 @@
+/* src/pages/terms/terms.component.css */
+
+/* Ensure easy reading on light-blue gradient */
+.terms-page {
+    background: #f8fcff;
+}
+
+/* Headings */
+.terms-page h1 {
+    color: #2065d1;
+}
+
+/* Paragraphs and lists */
+.terms-page p,
+.terms-page li {
+    line-height: 1.6;
+}
+
+/* Indent nested lists */
+.terms-page ol ol {
+    margin-top: .5rem;
+    margin-left: 1.5rem;
+}
+
+/* Links */
+.terms-page a {
+    color: #2065d1;
+    text-decoration: none;
+}
+.terms-page a:hover {
+    text-decoration: underline;
+}

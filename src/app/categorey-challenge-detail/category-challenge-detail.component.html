@@ -1,28 +1,53 @@
-<div *ngIf="categoryChallengePacks">
-  <div class="container p-6">
-    <app-hero
-      class="mb-5"
-      [image]="categoryChallengePacks.category.media.imageUrl"
-      [title]="categoryChallengePacks.category.name"
-      [subtitle]="categoryChallengePacks.category.description">
-
-    </app-hero>
-    <div class="row margin-lg" id="ex_row_cat" [style]="buildCssProperty('margin-top','16px')">
-        <div *ngFor="let challenges of categoryChallengePacks.challengePacks" class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 shadow-lg">
-          <div class="card h-100 shadow-sm border-info card-hover " (click)="openChallenges(slugify(challenges.title))"   [style]="buildStyle([buildCssProperty('background-color','#1F2937')])" >
-            <app-lottie-loader *ngIf="challenges.media" [width]="'100%'" [animationUrl]="challenges.media.animationUrl" [image]="challenges.media.imageUrl" class="card-img-top"  />
-            <div class="card-body d-flex flex-column   " >
-              <h5 class="card-title" [style]="buildStyle([buildCssProperty('color','white')])" >{{ challenges.title }}</h5>
-              <p class="card-text  small flex-grow-1" [style]="buildStyle([buildCssProperty('color','white')])">{{ challenges.description }}</p>
-              <!--            <button [routerLink]="['explore',category.slug]"  class="btn btn-light">{{ category.count }} challenges</button>-->
-            </div>
+<!-- src/pages/categories-detail/category-detail.component.html -->
+<section class="py-5 section-decoration bg-gradient-light" *ngIf="category">
+  <div class="container">
+    <!-- Category Header -->
+    <div class="row align-items-center mb-5 animate__animated animate__fadeInDown">
+      <div class="col-md-4 text-center mb-4 mb-md-0">
+        <app-lottie-loader [image]="category.media.imageUrl" [animationUrl]="category.media.animationUrl"
+             [alt]="category.name"
+                           class="img-fluid rounded shadow-sm"></app-lottie-loader>
+      </div>
+      <div class="col-md-8">
+        <h2 class="fw-bold">{{ category.name }}</h2>
+        <p class="text-secondary">{{ category.description }}</p>
+        <div class="d-flex flex-wrap gap-3">
+          <div *ngFor="let lvl of category.levelCounts"
+               class="badge bg-primary-custom text-white">
+            {{ lvl.level }}: {{ lvl.count }}
           </div>
-
+          <span class="badge bg-secondary">
+            Total Packs: {{ category.count }}
+          </span>
         </div>
-
+      </div>
     </div>
-    <app-footer></app-footer>
 
+    <!-- Packs Grid -->
+    <div class="row g-4">
+      <div class="col-12 col-sm-6 col-md-4"
+           *ngFor="let p of pagedPacks; let i = index">
+        <app-challenge-pack-item [challengePack]="p"></app-challenge-pack-item>
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    <nav class="d-flex justify-content-center mt-5">
+      <ul class="pagination">
+        <li class="page-item" [class.disabled]="page===1">
+          <a class="page-link" (click)="goTo(page-1)">Prev</a>
+        </li>
+        <li
+          class="page-item"
+          *ngFor="let pg of [].constructor(totalPages); let idx = index"
+          [class.active]="page===idx+1"
+        >
+          <a class="page-link" (click)="goTo(idx+1)">{{ idx+1 }}</a>
+        </li>
+        <li class="page-item" [class.disabled]="page===totalPages">
+          <a class="page-link" (click)="goTo(page+1)">Next</a>
+        </li>
+      </ul>
+    </nav>
   </div>
-
-</div>
+</section>

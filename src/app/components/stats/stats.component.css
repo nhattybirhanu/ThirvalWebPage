@@ -1,0 +1,30 @@
+/* src/components/stats/stats.component.css */
+
+.stats-section {
+    background: #f8fcff;
+}
+
+.metric-card {
+  /* now responds to light & dark themes */
+  background: radial-gradient(
+    circle at top left,
+    var(--gradient-light-start) 0%,
+    var(--gradient-light-end)   80%
+  );
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.metric-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+/* Animation delay helper classes (1s–4s) */
+.animate__delay-1s { animation-delay: 0.2s; }
+.animate__delay-2s { animation-delay: 0.4s; }
+.animate__delay-3s { animation-delay: 0.6s; }
+.animate__delay-4s { animation-delay: 0.8s; }
+
+.metric-card h3 {
+    color: #2065d1;
+}

@@ -2,6 +2,7 @@ import {Component, Inject, Input, OnInit, PLATFORM_ID, Renderer2} from '@angular
 import {isPlatformBrowser, NgIf} from "@angular/common";
 import {buildCssProperty, buildStyle, ColorSchema, ColorService} from '../../color.service';
 import {RouterLink} from '@angular/router';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
     selector: 'app-hero',
@@ -11,6 +12,15 @@ import {RouterLink} from '@angular/router';
     RouterLink
   ],
   templateUrl: './hero.component.html',
+  styleUrls:['/hero.component.css'],
+  animations: [
+    trigger('fadeIn', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateY(20px)' }),
+        animate('600ms ease-out', style({ opacity: 1, transform: 'none' }))
+      ])
+    ])
+  ]
 
 })
 export class HeroComponent implements OnInit{
@@ -26,6 +36,12 @@ export class HeroComponent implements OnInit{
     secondaryText:'#ABABABFF'
 
   }
+  images = [
+    'assets/slider1.jpg',
+    'assets/slider2.jpg',
+    'assets/slider3.jpg'
+  ];
+
     constructor(private renderer:Renderer2,
                 @Inject(PLATFORM_ID) private platformId: Object,
                 private colorService:ColorService
@@ -56,6 +72,10 @@ export class HeroComponent implements OnInit{
     `;
     this.renderer.appendChild(document.head, style);
   }
+  getTheHeroImage():string{
+   let isLight= (localStorage.getItem('theme') || 'light') =='light'
+  return isLight ? 'assets/app_mock_screen_1.png' :'assets/app_dark_mock_screen_1.png'
+    }
 
   protected readonly buildStyle = buildStyle;
   protected readonly buildCssProperty = buildCssProperty;

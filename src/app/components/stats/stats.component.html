@@ -1,0 +1,22 @@
+<section class="stats-section section-decoration bg-gradient-blue py-5">
+    <div class="container">
+      <h2 class="mb-5 text-center animate__animated animate__fadeInDown">
+        Stats
+      </h2>
+        <div class="row gy-4 text-center">
+            <div
+                    class="col-6 col-md-3"
+                    *ngFor="let stat of metrics; let i = index"
+            >
+                <div
+                        class="metric-card p-4 rounded-3 shadow-sm animate__animated"
+                        [ngClass]="'animate__fadeInUp animate__delay-' + (i+1) + 's'"
+                >
+                    <div class="fs-1 mb-2">{{ stat.icon }}</div>
+                    <h3 class="fw-bold">{{ stat.value }}</h3>
+                    <p class="text-secondary mb-0">{{ stat.label }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,43 @@
+/* Make sure the footer-section picks up the global gradient and card-bg */
+.footer-section {
+  width: 100%;
+  overflow: hidden;
+  /* 1. Solid fallback */
+  background-color: var(--bg);
+    background: radial-gradient(
+            circle at top left,
+            var(--gradient-light-start) 0%,
+            var(--gradient-light-end)   80%
+    );
+  width: 100%;
+
+  position: relative; /* for section-decoration circles */
+}
+
+/* Standardize link colors in both light & dark */
+.footer-link {
+    color: var(--text);
+    text-decoration: none;
+    transition: color .2s ease;
+}
+.footer-link:hover {
+    color: var(--primary);
+}
+
+/* Badge hover lift */
+.app-badge {
+    height: 40px;
+    object-fit: contain;
+    transition: transform .2s ease;
+}
+.app-badge:hover {
+    transform: translateY(-4px);
+}
+.footer-section .container {
+  background-color: transparent !important;
+}
+
+/*.footer-section {*/
+/*  !* now the footer itself has the gradient background *!*/
+/*  background-color: transparent !important; !* gradient already on the element *!*/
+/*}*/

@@ -1,14 +1,16 @@
 import {Component, inject, PLATFORM_ID} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {isPlatformServer} from '@angular/common';
-import { CommonModule } from '@angular/common';  // Import common module for basic functionality
+import { CommonModule } from '@angular/common';
+import {FooterComponent} from './components/footer/footer.component';
+import {HeaderComponent} from './components/header/header.component';  // Import common module for basic functionality
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   standalone:true,
-  imports: [CommonModule, RouterOutlet],  // Import necessary modules here
+  imports: [CommonModule, RouterOutlet, FooterComponent, HeaderComponent],  // Import necessary modules here
 
 })
 export class AppComponent {

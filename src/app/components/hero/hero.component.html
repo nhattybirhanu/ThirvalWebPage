@@ -1,18 +1,23 @@
-<section class="hero"
-         [style]="buildStyle([buildCssProperty('background',detailCardColorSchema.background)])">
-  <div class="container hero-content">
-    <h1 style="font-size: 3.5rem; margin-bottom: 20px; font-weight: 800;">
-      {{ title }}
-    </h1>
-    <p *ngIf="subtitle"
-       style="font-size: 1.25rem; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
-      {{ subtitle }}
-    </p>
-    <div *ngIf="showCta" style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-      <button  class="btn btn-primary">Get Started – It's Free!</button>
-      <button [routerLink]="['explore']" class="btn btn-secondary">Explore Challenges</button>
+<section class="hero-section section-decoration bg-gradient-light d-flex align-items-center">
+  <div class="container text-center text-lg-start">
+    <div class="row align-items-center">
+      <div class="col-lg-6 mb-4 animate__animated animate__fadeInLeft">
+        <h1 class="display-4 fw-bold mb-3">Unlock Your Next Challenge</h1>
+        <p class="lead mb-4 text-secondary">
+          Download the ThriveChallenger app and start conquering daily goals.
+        </p>
+        <div class="d-flex justify-content-center justify-content-lg-start">
+          <a href="#" class="btn btn-lg btn-primary-custom me-3 animate__animated animate__pulse animate__infinite">
+            <i class="bi bi-phone-fill me-2"></i>Download App
+          </a>
+          <a href="#features" class="btn btn-outline-primary btn-lg animate__animated animate__fadeInUp">
+            Learn More
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-6 text-center animate__animated animate__zoomIn animate__delay-1s">
+        <img [src]="getTheHeroImage()" alt="App on phone" class="img-fluid" />
+      </div>
     </div>
   </div>
-
 </section>
-<!--buildCssProperty('background','linear-gradient(135deg, '+detailCardColorSchema.background+ ' 0%, '+detailCardColorSchema.accent+ ' 100%)')-->
