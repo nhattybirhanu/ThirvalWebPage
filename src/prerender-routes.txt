@@ -1,5 +1,4 @@
 /
-/about
 /challenges/building-healthy-relationships
 /challenges/enhancing-communication-skills
 /challenges/creating-family-traditions

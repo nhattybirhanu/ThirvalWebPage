@@ -51,29 +51,12 @@ export class HeroComponent implements OnInit{
 
 
   ngOnInit(): void {
-    if (this.image){
-      if (isPlatformBrowser(this.platformId))
-      this.injectDynamicStyle(this.image)
-      this.colorService.extractColorSchemeFromImageUrl(this.image,this.detailCardColorSchema).then(value => {
-        this.detailCardColorSchema =value;
-      })
 
-    }
 
   }
-  injectDynamicStyle(url: string) {
-    const style = this.renderer.createElement('style');
-    style.innerHTML = `
-      .hero::before {
-        background: url('${url}');
-        background-position: center;
-      background-repeat: no-repeat;
-      }
-    `;
-    this.renderer.appendChild(document.head, style);
-  }
+
   getTheHeroImage():string{
-   let isLight= (localStorage.getItem('theme') || 'light') =='light'
+   let isLight= (isPlatformBrowser(this.platformId)&&localStorage.getItem('theme') || 'light') =='light'
   return isLight ? 'assets/app_mock_screen_1.png' :'assets/app_dark_mock_screen_1.png'
     }
 

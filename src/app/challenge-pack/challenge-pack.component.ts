@@ -44,11 +44,7 @@ export class ChallengePackComponent implements OnInit{
       if (id){
         this.challengeService.getChallengePack(id).subscribe(challengePack => {
             this.challengePack=challengePack
-          // if (this.challengePack.media.imageUrl)
-          //   this.colorService.extractColorSchemeFromImageUrl(this.challengePack.media.imageUrl,this.detailCardColorSchema).then(value1 => {
-          //     this.detailCardColorSchema=value1;
-          //
-          //   });
+
         }
         )
       }
