@@ -1,29 +1,17 @@
-/* src/pages/pack-detail/challenge-pack-detail.component.css */
-
-/* Make images cover their ratio box */
-.object-fit-cover {
-  object-fit: cover;
-}
-
-/* Pastel badge for tags */
-.bg-primary-custom {
-  background-color: #74c0fc !important;
-}
-
-/* Ensure list‑group items have comfy spacing */
-.list-group-item {
-  background-color: var(--card-bg) !important;
+.open-app-btn {
+  position: fixed;
+  bottom: 20px;         /* distance from bottom */
+  left: 50%;            /* start at halfway across */
+  transform: translateX(-50%); /* shift back by half its width */
+  padding: 12px 20px;
+  background: #007bff;
+  color: white;
   border: none;
-  transition: transform 0.2s, box-shadow 0.2s;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  cursor: pointer;
+  z-index: 1000;
 }
-.list-group-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+.open-app-btn:hover {
+  background: #0069d9;
 }
-
-/* Animate.css delay helpers (1s–5s) */
-.animate__delay-1s { animation-delay: 0.1s; }
-.animate__delay-2s { animation-delay: 0.2s; }
-.animate__delay-3s { animation-delay: 0.3s; }
-.animate__delay-4s { animation-delay: 0.4s; }
-.animate__delay-5s { animation-delay: 0.5s; }

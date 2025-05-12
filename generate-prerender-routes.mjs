@@ -11,7 +11,7 @@ const __dirname = path.dirname(__filename);
 
 // --- Configuration ---
 // Make sure this matches your actual environment setup
-const API_BASE_URL = "https://thrival-admin-api-2b543076ce26.herokuapp.com/admin/api/v1/public";// e.g., http://localhost:3000/api or environment.BASE_URL
+const API_BASE_URL = "https://admin.api.getthrival.app/admin/api/v1/public";// e.g., http://localhost:3000/api or environment.BASE_URL
 const ROUTES_OUTPUT_FILE = path.join(__dirname, 'src', 'prerender-routes.txt'); // Output file path
 const STATIC_ROUTES = [ // Add other non-dynamic routes you want to prerender
   '/',

@@ -44,7 +44,7 @@ export class ChallengePackComponent implements OnInit{
       if (id){
         this.challengeService.getChallengePack(id).subscribe(challengePack => {
             this.challengePack=challengePack
-
+          this.openApp()
         }
         )
       }
@@ -59,5 +59,9 @@ export class ChallengePackComponent implements OnInit{
 
   sharechallengePack() {
 
+  }
+
+  openApp() {
+    window.location.href=`thrival://open/challenge-pack/${this.challengePack?.id}`
   }
 }
