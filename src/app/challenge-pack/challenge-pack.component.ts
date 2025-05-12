@@ -1,8 +1,8 @@
-import {Component, OnInit, signal} from '@angular/core';
+import {Component, Inject, OnInit, PLATFORM_ID, signal} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {ChallengePack, ChallengeService} from '../challenge.service';
 import {HeroComponent} from '../components/hero/hero.component';
-import {NgClass, NgForOf, NgIf} from '@angular/common';
+import {isPlatformBrowser, NgClass, NgForOf, NgIf} from '@angular/common';
 import {FooterComponent} from '../components/footer/footer.component';
 import {sign} from 'crypto';
 import {async} from 'rxjs';
@@ -36,7 +36,9 @@ export class ChallengePackComponent implements OnInit{
     secondaryText:'#ABABABFF'
   }
 
-  constructor(private activatedRoute:ActivatedRoute,private challengeService:ChallengeService, private colorService:ColorService) {
+  constructor(private activatedRoute:ActivatedRoute,private challengeService:ChallengeService, private colorService:ColorService,
+              @Inject(PLATFORM_ID) private platformId: any
+              ) {
   }
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(value => {
@@ -62,6 +64,7 @@ export class ChallengePackComponent implements OnInit{
   }
 
   openApp() {
+    if ( isPlatformBrowser(this.platformId))
     window.location.href=`thrival://open/challenge-pack/${this.challengePack?.id}`
   }
 }
