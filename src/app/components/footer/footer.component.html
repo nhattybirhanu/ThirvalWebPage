@@ -26,15 +26,16 @@
                text-center text-md-start"
       >
         <h5 class="mb-3">Stay Informed</h5>
-        <form class="d-flex justify-content-center justify-content-md-start w-100">
+        <div class="d-flex justify-content-center justify-content-md-start w-100">
           <input
             type="email"
             class="form-control me-2"
             placeholder="Your email"
             aria-label="Email"
+            #email
           >
-          <button class="btn btn-primary" type="submit">Subscribe</button>
-        </form>
+          <button class="btn btn-primary" [disabled]="!email.value" (click)="subscribe(email.value) ;email.value=''" type="submit">Subscribe</button>
+        </div>
       </div>
 
       <!-- Column 3: Download Badges -->

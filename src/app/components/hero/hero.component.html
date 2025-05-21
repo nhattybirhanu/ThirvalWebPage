@@ -2,14 +2,18 @@
   <div class="container text-center text-lg-start">
     <div class="row align-items-center">
       <div class="col-lg-6 mb-4 animate__animated animate__fadeInLeft">
-        <h1 class="display-4 fw-bold mb-3">Unlock Your Next Challenge</h1>
-        <p class="lead mb-4 text-secondary">
+        <div >
+          <img class="app_icon" src="assets/app_icon_transparent.png"/>
+
+        </div>
+        <h1 class="display-4 fw-bold mb-3 ">Unlock Your Next Challenge</h1>
+        <p class="lead mb-4 text-secondary ">
           Download the ThriveChallenger app and start conquering daily goals.
         </p>
         <div class="d-flex justify-content-center justify-content-lg-start">
-          <a href="#" class="btn btn-lg btn-primary-custom me-3 animate__animated animate__pulse animate__infinite">
+          <button (click)="redirectToStore()"  class="btn btn-lg btn-primary-custom me-3 animate__animated animate__pulse animate__infinite">
             <i class="bi bi-phone-fill me-2"></i>Download App
-          </a>
+          </button>
           <a href="#features" class="btn btn-outline-primary btn-lg animate__animated animate__fadeInUp">
             Learn More
           </a>

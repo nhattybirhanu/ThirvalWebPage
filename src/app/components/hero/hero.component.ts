@@ -54,6 +54,21 @@ export class HeroComponent implements OnInit{
 
 
   }
+  redirectToStore(): void {
+    const userAgent = navigator.userAgent || navigator.vendor;
+
+    if (/android/i.test(userAgent)) {
+      // Redirect to Google Play Store
+      window.location.href = 'https://play.google.com/store/apps/details?id=com.az.thrival';
+    } else if (/iPad|iPhone|iPod/.test(userAgent)) {
+      // Redirect to Apple App Store
+      window.location.href = 'https://apps.apple.com/us/app/thrival-challenges/id67410573129';
+    } else {
+      // Optional: fallback or show both links
+      // window.location.href = 'https://yourwebsite.com/download';
+    }
+  }
+
 
   getTheHeroImage():string{
    let isLight= (isPlatformBrowser(this.platformId)&&localStorage.getItem('theme') || 'light') =='light'
