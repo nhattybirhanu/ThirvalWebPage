@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "C8Z4SN27QS.com.az.thrival",
+        "paths": [ "/challenges/*" ]
+      }
+    ]
+  }
+}
