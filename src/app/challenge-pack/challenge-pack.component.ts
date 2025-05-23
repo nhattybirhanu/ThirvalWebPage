@@ -4,8 +4,6 @@ import {ChallengePack, ChallengeService} from '../challenge.service';
 import {HeroComponent} from '../components/hero/hero.component';
 import {isPlatformBrowser, NgClass, NgForOf, NgIf} from '@angular/common';
 import {FooterComponent} from '../components/footer/footer.component';
-import {sign} from 'crypto';
-import {async} from 'rxjs';
 import {LottieLoaderComponent} from '../lottie-loader/lottie-loader.component';
 import {ChallengeItemComponent} from '../challenge-item/challenge-item.component';
 import {buildCssProperty, buildStyle, ColorSchema, ColorService} from '../color.service';
@@ -28,7 +26,7 @@ import {changesToK, randomIntFromInterval} from '../util';
 })
 export class ChallengePackComponent implements OnInit{
   challengePack:ChallengePack | undefined
-  numberOfMembers = changesToK(randomIntFromInterval(2000,10000));
+  numberOfMembers = "";
   detailCardColorSchema:ColorSchema ={
     accent:'#4F46E5',
     background:'#000000',
@@ -40,7 +38,9 @@ export class ChallengePackComponent implements OnInit{
               @Inject(PLATFORM_ID) private platformId: any
               ) {
   }
+
   ngOnInit(): void {
+    this.numberOfMembers = changesToK(randomIntFromInterval(2000,10000));
     this.activatedRoute.params.subscribe(value => {
       let id = value['id']
       if (id){
@@ -52,8 +52,6 @@ export class ChallengePackComponent implements OnInit{
       }
     })
   }
-
-  protected readonly async = async;
   protected readonly buildStyle = buildStyle;
   protected readonly buildCssProperty = buildCssProperty;
   protected readonly changesToK = changesToK;
@@ -64,7 +62,9 @@ export class ChallengePackComponent implements OnInit{
   }
 
   openApp() {
-    if ( isPlatformBrowser(this.platformId))
-    window.location.href=`thrival://open/challenge-pack/${this.challengePack?.id}`
+    if ( isPlatformBrowser(this.platformId)){
+      window.location.href=`thrival://open/challenge-pack/${this.challengePack?.id}`
+
+    }
   }
 }

@@ -1,4 +1,3 @@
-/
 /challenges/morning-energizers
 /challenges/afternoon-focus
 /challenges/evening-unwind

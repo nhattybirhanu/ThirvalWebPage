@@ -15,14 +15,20 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/thrival-web-page/browser",
+            "outputPath": "dist/thrival-web-page/",
             "index": "src/index.html",
-            "main": "src/main.ts",
+            "server": "src/main.server.ts",
+            "browser": "src/main.ts",
+
             "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
+            "prerender": {
+              "routesFile": "src/prerender-routes.txt",
+              "discoverRoutes": false
+            },
             "assets": [
               {
                 "glob": "**/*",
@@ -82,27 +88,6 @@
           },
           "defaultConfiguration": "production"
         },
-        "server": {
-          "builder": "@angular-devkit/build-angular:server",
-          "options": {
-            "outputPath": "dist/thrival-web-page/server",
-            "main": "src/main.server.ts",
-            "tsConfig": "tsconfig.server.json"
-          },
-          "configurations": {
-            "production": {
-              "optimization": true,
-              "sourceMap": false,
-              "outputHashing": "media"
-            },
-            "development": {
-              "optimization": false,
-              "sourceMap": true
-            }
-          },
-          "defaultConfiguration": "production"
-
-        },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
@@ -138,15 +123,6 @@
             "scripts": []
           }
         },
-        "prerender": {
-          "builder": "@angular-devkit/build-angular:prerender",
-          "options": {
-            "browserTarget": "thrival-web-page:build:production",
-            "serverTarget": "thrival-web-page:server:production",
-            "routesFile": "src/prerender-routes.txt",
-            "discoverRoutes": false
-          }
-        },
         "build:ssr": {
           "builder": "@angular-devkit/build-angular:ssr-dev-server",
           "options": {
@@ -167,5 +143,7 @@
   },
   "cli": {
     "analytics": false
-  }
+  },
+
+
 }

@@ -6,7 +6,7 @@
     "types": ["node"]
   },
   "files": [
-    "src/main.server.ts","src/server.mjs"  ],
+    "src/main.server.ts"  ],
   "angularCompilerOptions": {
     "tsConfigPath": "./tsconfig.server.json"
   }
