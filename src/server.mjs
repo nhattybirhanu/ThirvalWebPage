@@ -15,6 +15,12 @@ app.get('/.well-known/apple-app-site-association', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
   res.sendFile(aasaPath);
 });
+app.get('/hello', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  res.send({
+    "Test":" hello"
+  });
+});
 app.use(express.static(browserDistFolder, {
   maxAge: '1y',
   index: false,
