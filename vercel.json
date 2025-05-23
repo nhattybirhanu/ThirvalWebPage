@@ -22,8 +22,10 @@
         {
           "key": "Content-Type",
           "value": "application/json"
-        }
-        ]
+        },
+        { "key": "X-Debug-AASA", "value": "served-from-vercel" }
+
+      ]
     }
   ]
 }
