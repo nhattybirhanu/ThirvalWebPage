@@ -57,4 +57,4 @@ const server = app();
 console.warn('Node Express server started');
 
 // This exposes the RequestHandler
-export const reqHandler = createNodeRequestHandler(server);
+export default createNodeRequestHandler(server);
