@@ -1,13 +1,14 @@
 {
   "name": "thrival-web-page",
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "start-local": "ng serve",
     "ng": "ng",
     "build": "npm run generate:routes && ng build --configuration production",
-    "serve:ssr": "node dist/thrival-web-page/server/server.mjs",
+    "serve:ssr": "node dist/thrival-web-page/server/server.ts",
     "dev:ssr": "npm run build:ssr && npm run serve:ssr",
-    "start": "node dist/thrival-web-page/server/server.mjs",
+    "start": "node dist/thrival-web-page/server/server.ts",
     "local:ssr": "ng build --watch",
     "nodemon": "nodemon",
     "generate:routes": "node ./generate-prerender-routes.mjs",
