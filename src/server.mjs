@@ -14,6 +14,11 @@ app.use(express.static(browserDistFolder, {
   index: false,
   redirect: false,
 }));
+const aasaPath = resolve(browserDistFolder, '.well-known/apple-app-site-association');
+app.get('/.well-known/apple-app-site-association', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  res.sendFile(aasaPath);
+});
 
 // Fallback handler: handle all routes not served by static files
 app.use((req, res, next) => {
