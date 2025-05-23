@@ -46,7 +46,7 @@ export class ChallengePackComponent implements OnInit{
       if (id){
         this.challengeService.getChallengePack(id).subscribe(challengePack => {
             this.challengePack=challengePack
-          this.openApp()
+          // this.openApp()
         }
         )
       }
