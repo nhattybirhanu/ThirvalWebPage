@@ -9,16 +9,17 @@ const browserDistFolder = resolve(serverDistFolder, '../browser');
 const app = express();
 const angularApp = new AngularNodeAppEngine();
 
-app.use(express.static(browserDistFolder, {
-  maxAge: '1y',
-  index: false,
-  redirect: false,
-}));
+
 const aasaPath = resolve(browserDistFolder, '.well-known/apple-app-site-association');
 app.get('/.well-known/apple-app-site-association', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
   res.sendFile(aasaPath);
 });
+app.use(express.static(browserDistFolder, {
+  maxAge: '1y',
+  index: false,
+  redirect: false,
+}));
 
 // Fallback handler: handle all routes not served by static files
 app.use((req, res, next) => {
