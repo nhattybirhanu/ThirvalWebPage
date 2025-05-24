@@ -1,5 +1,7 @@
 import { RenderMode, ServerRoute } from '@angular/ssr';
 import {environment} from '../environments/environment.prod';
+import {inject} from '@angular/core';
+import {ChallengeService} from './challenge.service';
 
 
 export const serverRoutes: ServerRoute[] = [
@@ -9,14 +11,8 @@ export const serverRoutes: ServerRoute[] = [
     renderMode: RenderMode.Prerender,
     async getPrerenderParams() {
       try {
-        // const res = await fetch(`${environment.BASE_URL}/challenges/slugs`);
-        //
-        // if (!res.ok) {
-        //   console.error('Failed to fetch challenge titles:', res.statusText);
-        //   return []; // Don't crash the build
-        // }
-
-        const ids: string[] = ['building-healthy-relationships', 'emotional-intelligence'];
+       const challengeService =inject(ChallengeService);
+        const ids: string[] =     await   challengeService.getChallengeTitles().toPromise() || []
         // const ids: string[] = ['building-healthy-relationships']
         return ids.map(id => ({ id }));
       } catch (error) {
