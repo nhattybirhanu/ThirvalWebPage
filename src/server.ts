@@ -19,7 +19,7 @@ export function app(): express.Express {
   server.use('/api/**', (req, res) => res.json({ hello: 'foo' }));
 
   const aasaPath = resolve(browserDistFolder, '.well-known/apple-app-site-association');
-  server.get('/.well-known/apple-app-site-association', (req, res) => {
+  server.use('/.well-known/apple-app-site-association', (req, res) => {
     res.setHeader('Content-Type', 'application/json');
     res.sendFile(aasaPath);
   });
