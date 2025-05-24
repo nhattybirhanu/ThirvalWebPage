@@ -18,6 +18,12 @@ export function app(): express.Express {
 
   server.use('/api/**', (req, res) => res.json({ hello: 'foo' }));
 
+  const aasaPath = resolve(browserDistFolder, '.well-known/apple-app-site-association');
+  server.get('/.well-known/apple-app-site-association', (req, res) => {
+    res.setHeader('Content-Type', 'application/json');
+    res.sendFile(aasaPath);
+  });
+
   server.get(
     '**',
     express.static(browserDistFolder, {
@@ -25,11 +31,7 @@ export function app(): express.Express {
       index: 'index.html',
     })
   );
-  const aasaPath = resolve(browserDistFolder, '.well-known/apple-app-site-association');
-  server.get('/.well-known/apple-app-site-association', (req, res) => {
-    res.setHeader('Content-Type', 'application/json');
-    res.sendFile(aasaPath);
-  });
+
   server.get('**', (req, res, next) => {
     // Yes, this is executed in devMode via the Vite DevServer
     console.log('request', req.url, res.status);
