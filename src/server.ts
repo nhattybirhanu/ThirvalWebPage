@@ -25,12 +25,11 @@ export function app(): express.Express {
       index: 'index.html',
     })
   );
-
-  // With this config, /404 will not reach the Angular app
-  server.get('/404', (req, res, next) => {
-    res.send('Express is serving this server only error');
+  const aasaPath = resolve(browserDistFolder, '.well-known/apple-app-site-association');
+  server.get('/.well-known/apple-app-site-association', (req, res) => {
+    res.setHeader('Content-Type', 'application/json');
+    res.sendFile(aasaPath);
   });
-
   server.get('**', (req, res, next) => {
     // Yes, this is executed in devMode via the Vite DevServer
     console.log('request', req.url, res.status);
