@@ -57,10 +57,10 @@ export class MetadataResolver implements Resolve<any> {
     this.setMetaTag({ property: 'og:url', content: this.location.path() });
 
     // Twitter tags
-    this.setMetaTag({ name: 'twitter:card', content: metadata.image });
-    this.setMetaTag({ name: 'twitter:title', content: metadata.title });
-    this.setMetaTag({ name: 'twitter:description', content: metadata.description });
-    this.setMetaTag({ name: 'twitter:image', content: metadata.image });
+    this.setMetaTag({ property: 'twitter:card', content: metadata.image });
+    this.setMetaTag({ property: 'twitter:title', content: metadata.title });
+    this.setMetaTag({ property: 'twitter:description', content: metadata.description });
+    this.setMetaTag({ property: 'twitter:image', content: metadata.image });
 
     // Transfer metadata to client
     if (isPlatformBrowser(this.platformId)) {
