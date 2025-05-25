@@ -74,7 +74,7 @@ async function generateFiles() {
   const challengeSlugs = await fetchChallengeSlugs();
   const explorer = await fetchExploreSlugs()
   const dynamicRoutes = challengeSlugs.map(slug => `/challenges/${slug}`);
-  const allRoutes = [...STATIC_ROUTES, ...dynamicRoutes,...explorer.map(value => `/explorer/${value}`)];
+  const allRoutes = [...STATIC_ROUTES, ...dynamicRoutes,...explorer.map(value => `/explore/${value}`)];
   const uniqueRoutes = [...new Set(allRoutes)];
 
   // Write prerender-routes.txt
