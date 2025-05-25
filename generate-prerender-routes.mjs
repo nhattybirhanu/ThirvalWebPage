@@ -1,7 +1,7 @@
 // generate-prerender-routes.mjs
 import fs from 'fs/promises';
 import path from 'path';
-import { fileURLToPath } from 'url';
+import {fileURLToPath} from 'url';
 
 // Derive __dirname in ES Modules
 const __filename = fileURLToPath(import.meta.url);
@@ -35,6 +35,27 @@ async function fetchChallengeSlugs() {
   }
 }
 
+async function fetchExploreSlugs() {
+  try {
+    const response = await fetch(`${API_BASE_URL}/categories`);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch challenge category slugs: ${response.status} ${response.statusText}`);
+    }
+    const slugsData = await response.json(); // This is ChallengeCategory[]
+
+    if (!Array.isArray(slugsData)) {
+      throw new Error('API did not return an array');
+    }
+
+// Extract slug strings from ChallengeCategory[]
+    return slugsData
+      .map(cat => cat.slug)
+      .filter(slug => typeof slug === 'string' && slug.length > 0);
+  } catch (error) {
+    console.error("Error fetching challenge category slugs:", error);
+    return [];
+  }
+}
 function generateSitemapXml(routes) {
   const lines = [
     '<?xml version="1.0" encoding="UTF-8"?>',
@@ -51,8 +72,9 @@ function generateSitemapXml(routes) {
 async function generateFiles() {
   console.log('Fetching challenge slugs...');
   const challengeSlugs = await fetchChallengeSlugs();
+  const explorer = await fetchExploreSlugs()
   const dynamicRoutes = challengeSlugs.map(slug => `/challenges/${slug}`);
-  const allRoutes = [...STATIC_ROUTES, ...dynamicRoutes];
+  const allRoutes = [...STATIC_ROUTES, ...dynamicRoutes,...explorer.map(value => `/explorer/${value}`)];
   const uniqueRoutes = [...new Set(allRoutes)];
 
   // Write prerender-routes.txt

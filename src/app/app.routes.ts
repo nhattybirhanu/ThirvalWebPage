@@ -14,7 +14,14 @@ export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'about', component: AboutComponent },
   {path:'explore',component:ExploreChallengePageComponent},
-  {path:"explore/:slug",component:CategoryChallengeDetailComponent},
+  {path:"explore/:id",component:CategoryChallengeDetailComponent,
+    resolve:{
+      metadata:MetadataResolver
+    },
+    data:{
+      page:Page.Explorer
+    },
+  },
   {path:"categories", component:CategoriesPageComponent},
   {path:'challenges/:id',component:ChallengePackComponent,resolve:{
       metadata:MetadataResolver

@@ -39,3 +39,12 @@
 /challenges/evening-wind-down
 /challenges/weekend-warrior
 /challenges/focus-and-flow
+/explorer/skills-and-hobbies
+/explorer/travel-and-exploration
+/explorer/health-and-fitness
+/explorer/community-and-volunteering
+/explorer/entertainment
+/explorer/family-and-relationships
+/explorer/productivity
+/explorer/finance-management
+/explorer/personal-development

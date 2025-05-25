@@ -13,7 +13,7 @@ import {HeroComponent} from '../components/hero/hero.component';
 import {LottieLoaderComponent} from '../lottie-loader/lottie-loader.component';
 import {buildCssProperty, buildStyle} from '../color.service';
 import {slugify} from '../util';
-import {MetadataResolver} from '../MetadataResolver';
+import {buildUrl, MetadataResolver} from '../MetadataResolver';
 import {ChallengePackItemComponent} from '../component/challenge-pack-item/challenge-pack-item.component';
 
 @Component({
@@ -47,7 +47,7 @@ export class CategoryChallengeDetailComponent implements OnInit{
 
   ngOnInit(): void {
     this.activeRoute.params.subscribe(value => {
-      let slug= value['slug'];
+      let slug= value['id'];
       if (slug){
       this.challengeService.getCategoryChallengePack(slug).subscribe(challengeCategory => {
         this.categoryChallengePacks=challengeCategory;
@@ -60,7 +60,8 @@ export class CategoryChallengeDetailComponent implements OnInit{
         this.metaResolver.applyMetaData({
           title:challengeCategory.category.name,
           description:challengeCategory.category.description,
-          image:challengeCategory.category.media.imageUrl || ''
+          image:challengeCategory.category.media.imageUrl || '',
+          url:buildUrl('explore',challengeCategory.category.name)
         })
       })
       }
