@@ -23,7 +23,7 @@ export class MetadataResolver implements Resolve<any> {
     let $id = route.params['id']
     let page:Page=route.data['page']
     return this.getMeta(page,$id).pipe(map(value => {
-
+      console.log("Applying meta ",value)
       this.applyMetaData(value)
       return value;
     }));
@@ -39,14 +39,16 @@ export class MetadataResolver implements Resolve<any> {
       }
       case Page.ChallengePack:
         return  this.challengeService.getChallengePack($id).pipe(map(value => {
-          let metaData:MetaData={title:value.title,description:value.description,image:value.media.imageUrl || ''}
+          let metaData:MetaData={title:value.title,description:value.description,image:value.media.imageUrl || '',keyword:value.tags}
           return metaData}))
     }
 
   }
   applyMetaData(metadata:MetaData){
     this.title.setTitle(metadata.title);
-
+    this.setMetaTag({ name: 'title', content: metadata.title });
+    if (metadata.keyword&&metadata.keyword.length>0)
+    this.setMetaTag({name:'keywords' ,content:(metadata.keyword ||[]).join(',')})
     this.setMetaTag({ name: 'description', content: metadata.description });
     this.setMetaTag({ property: 'og:title', content: metadata.title });
     this.setMetaTag({ property: 'og:description', content: metadata.description });
@@ -55,7 +57,7 @@ export class MetadataResolver implements Resolve<any> {
     this.setMetaTag({ property: 'og:url', content: this.location.path() });
 
     // Twitter tags
-    this.setMetaTag({ name: 'twitter:card', content: 'summary_large_image' });
+    this.setMetaTag({ name: 'twitter:card', content: metadata.image });
     this.setMetaTag({ name: 'twitter:title', content: metadata.title });
     this.setMetaTag({ name: 'twitter:description', content: metadata.description });
     this.setMetaTag({ name: 'twitter:image', content: metadata.image });
@@ -88,7 +90,8 @@ export enum Page{
 export interface MetaData{
   title:string,
   description:string;
-  image:string
+  image:string,
+  keyword?:string[]
 }
 export function defaultMetaData():MetaData{
   return {
