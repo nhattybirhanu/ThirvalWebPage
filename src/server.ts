@@ -23,7 +23,11 @@ export function app(): express.Express {
     res.setHeader('Content-Type', 'application/json');
     res.sendFile(aasaPath);
   });
-
+  const robotsPath = resolve(browserDistFolder, 'robots.txt');
+  server.use('/.well-known/apple-app-site-association', (req, res) => {
+    res.setHeader('Content-Type', 'text/plane');
+    res.sendFile(robotsPath);
+  });
   server.get(
     '**',
     express.static(browserDistFolder, {
