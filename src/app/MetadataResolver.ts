@@ -73,22 +73,21 @@ export class MetadataResolver implements Resolve<any> {
     this.setMetaTag({ property: 'twitter:title', content: metadata.title });
     this.setMetaTag({ property: 'twitter:description', content: metadata.description });
     this.setMetaTag({ property: 'twitter:image', content: metadata.image });
+    this.updateFavicon(metadata.image);
 
-    // Transfer metadata to client
-    if (isPlatformBrowser(this.platformId)) {
-      this.updateFavicon(metadata.image);
-    }
     this.transferState.set(META_KEY, metadata);
     this.setCanonicalURL(metadata.url)
 
 
   }
   updateFavicon(iconUrl: string): void {
-    const link: HTMLLinkElement = document.querySelector("link[rel~='icon']") || document.createElement('link');
-    link.rel = 'icon';
-    link.href = iconUrl;
-    link.type = 'image/png';
-    document.getElementsByTagName('head')[0].appendChild(link);
+    const head = this.doc.head;
+
+    const link = this.doc.querySelector("link[rel~='icon']") || document.createElement('link');
+    this.renderer.setAttribute(link, 'href', iconUrl);
+    this.renderer.setAttribute(link, 'rel', 'icon');
+    this.renderer.setAttribute(link, 'type', 'image/png');
+
   }
   setCanonicalURL(url?: string) {
     const head = this.doc.head;
