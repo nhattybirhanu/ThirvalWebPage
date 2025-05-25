@@ -53,6 +53,8 @@ export class MetadataResolver implements Resolve<any> {
     this.setMetaTag({ property: 'og:title', content: metadata.title });
     this.setMetaTag({ property: 'og:description', content: metadata.description });
     this.setMetaTag({ property: 'og:image', content: metadata.image });
+    this.setMetaTag({ property: 'og:image:width', content: "1200" });
+    this.setMetaTag({ property: 'og:image:height', content: "630"});
     this.setMetaTag({ property: 'og:type', content: 'website' });
     this.setMetaTag({ property: 'og:url', content: this.location.path() });
 
