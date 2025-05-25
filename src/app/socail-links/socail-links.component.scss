@@ -1,0 +1,56 @@
+/* Background matches landing-page gradients */
+.social-links-bg {
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(circle at top left,    var(--gradient-blue-start) 0%, var(--gradient-blue-end)   80%),
+    radial-gradient(circle at bottom right,var(--gradient-light-start) 0%, var(--gradient-light-end) 100%);
+  position: relative;
+  overflow: hidden;
+
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.15;
+    z-index: 0;
+  }
+  &::before {
+    width: 120px; height: 120px;
+    background: var(--primary);
+    top: -40px; right: -40px;
+  }
+  &::after {
+    width: 100px; height: 100px;
+    background: var(--secondary);
+    bottom: -30px; left: -30px;
+  }
+  .container {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+/* Each social icon button */
+.social-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--card-bg);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform .2s, box-shadow .2s, background .2s;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    background: var(--secondary);
+    color: var(--card-bg);
+  }
+
+  i {
+    color: var(--primary);
+  }
+}
+

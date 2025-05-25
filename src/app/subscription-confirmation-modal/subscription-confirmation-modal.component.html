@@ -1,0 +1,46 @@
+<!-- Subscription Confirmation Modal -->
+<div
+  class="modal fade"
+  id="subscriptionModal"
+  tabindex="-1"
+  aria-labelledby="subscriptionModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content confirmation-modal">
+
+      <!-- Gradient header with circle accent -->
+      <div class="modal-header text-center">
+        <h5 class="modal-title w-100" id="subscriptionModalLabel">
+          Subscription Confirmed!
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          aria-label="Close"
+          (click)="onClose()"
+        ></button>
+      </div>
+
+      <!-- Body -->
+      <div class="modal-body text-center">
+        <p class="mb-4 text-secondary">
+          Thanks for subscribing. You’ll now receive our latest challenges and tips directly in your inbox!
+        </p>
+        <i class="bi bi-envelope-check-fill fs-1 text-primary mb-3"></i>
+      </div>
+
+      <!-- Footer CTA -->
+      <div class="modal-footer justify-content-center">
+        <button
+          type="button"
+          class="btn btn-primary-custom px-4 text-secondary"
+          (click)="onClose()"
+        >
+          Got it!
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>

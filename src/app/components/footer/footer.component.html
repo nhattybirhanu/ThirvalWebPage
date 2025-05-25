@@ -15,6 +15,7 @@
           <li><a routerLink="/explore" class="footer-link">Explore</a></li>
           <li><a routerLink="/features"class="footer-link">Features</a></li>
           <li><a routerLink="/categories" class="footer-link">Categories</a></li>
+          <li><a routerLink="/about" class="footer-link">About</a></li>
         </ul>
       </div>
 
@@ -33,8 +34,9 @@
             placeholder="Your email"
             aria-label="Email"
             #email
+            (input)="emailInput($event)"
           >
-          <button class="btn btn-primary" [disabled]="!email.value" (click)="subscribe(email.value) ;email.value=''" type="submit">Subscribe</button>
+          <button class="btn btn-primary" [disabled]="isDisabled" (click)="subscribe(email.value) ;email.value=''" type="submit">Subscribe</button>
         </div>
       </div>
 
@@ -76,4 +78,8 @@
       </div>
     </div>
   </div>
+  <app-subscription-confirmation-modal
+    #confirmModal
+    (closed)="onModalClosed()"
+  ></app-subscription-confirmation-modal>
 </footer>

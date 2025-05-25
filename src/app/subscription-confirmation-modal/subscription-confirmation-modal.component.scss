@@ -1,0 +1,66 @@
+/* Modal content with soft card look */
+.confirmation-modal {
+  border: none;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  background: var(--card-bg);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+
+  .modal-header {
+    --bs-modal-bg: transparent;
+    background-image:
+      radial-gradient(circle at top left,
+        var(--gradient-blue-start) 0%,
+        var(--gradient-blue-end)   80%
+      );
+    position: relative;
+    z-index: 1;
+    border-bottom: none;
+
+    /* Decorative circle in corner */
+    &::after {
+      content: '';
+      position: absolute;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      background: var(--secondary);
+      opacity: 0.2;
+      top: -60px; right: -60px;
+      z-index: 0;
+    }
+
+    .modal-title {
+      //color: #fff;
+      font-weight: 600;
+    }
+    .btn-close {
+      filter: brightness(0) invert(1);
+    }
+  }
+
+  .modal-body {
+    padding: 2rem 1.5rem;
+    i {
+      display: block;
+    }
+  }
+
+  .modal-footer {
+    border-top: none;
+    padding-bottom: 1.5rem;
+  }
+
+  .btn-primary-custom {
+    --background: var(--primary);
+    --border-radius: 0.5rem;
+  }
+}
+
+/* Fade in keyframes (optional) */
+.modal-content.confirmation-modal {
+  animation: fadeInUp 0.5s ease-out;
+}
+@keyframes fadeInUp {
+  from { transform: translateY(16px); opacity: 0; }
+  to   { transform: translateY(0);     opacity: 1; }
+}

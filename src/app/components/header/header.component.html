@@ -10,10 +10,11 @@
     <div class="px-3">
       <button
 
-        class="navbar-toggler"
+        class="navbar-toggler text-dark"
         type="button"
         aria-label="Toggle navigation"
         (click)="toggleMenu()"
+
       >
         <i *ngIf="!menuOpen" class="bi bi-list fs-3"></i>
         <i *ngIf=" menuOpen" class="bi bi-x-lg fs-3"></i>
@@ -34,6 +35,9 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/categories" (click)="closeNav()">Categories</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/about" (click)="closeNav()">About</a>
         </li>
       </ul>
       <div class="d-flex align-items-center">

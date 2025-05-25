@@ -1,0 +1,39 @@
+<section class="feature-bg section-decoration py-5">
+  <div class="container">
+
+    <!-- Page Title -->
+    <div class="row mb-5 text-center animate__animated animate__fadeInDown">
+      <div class="col">
+        <h1 class="display-5 fw-bold">Features of Thrival</h1>
+      </div>
+    </div>
+
+    <!-- Features Grid -->
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4 animate__animated animate__fadeInUp"
+           *ngFor="let f of features; let i = index"
+           [class.animate__delay-2s]="i%3===2"
+           [class.animate__delay-1s]="i%3===1">
+        <div class="card feature-card h-100 p-3">
+          <div class="d-flex align-items-start mb-3">
+            <i [class]="'fs-1 me-3 bi '+ f.icon + ' text-primary'"></i>
+            <div>
+              <h5 class="fw-bold mb-1">{{ f.title }}</h5>
+            </div>
+          </div>
+          <p class="text-secondary">{{ f.desc }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="row mt-5">
+      <div class="col text-center animate__animated animate__zoomIn animate__delay-1s">
+        <a routerLink="/signup" class="btn btn-lg btn-primary-custom px-5">
+          Get Started with Thrival
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,92 @@
+<!-- src/app/about-page/about-page.component.html -->
+<section class="about-bg section-decoration py-5">
+  <div class="container">
+
+    <!-- Hero / Title -->
+    <div class="row mb-5 animate__animated animate__fadeInDown">
+      <div class="col text-center">
+        <h1 class="display-4 fw-bold">About Thrival</h1>
+        <p class="lead text-secondary">
+          Empowering individuals through challenges, community, and growth.
+        </p>
+      </div>
+    </div>
+
+    <!-- Our Mission -->
+    <div class="row align-items-center mb-5">
+      <div class="col-md-6 animate__animated animate__fadeInLeft">
+        <h2>Our Mission</h2>
+        <p class="text-secondary">
+          At Thrival, our mission is to help you forge strength—both mental and physical—through daily challenges, supportive community, and data-driven insights.
+        </p>
+      </div>
+      <div class="col-md-6 animate__animated animate__fadeInRight text-center">
+        <app-lottie-loader [animationUrl]="'/assets/animations/mission.json'"></app-lottie-loader>
+      </div>
+    </div>
+
+    <!-- Core Values -->
+    <div class="row text-center mb-5">
+      <div class="col-12 mb-3 animate__animated animate__fadeInUp">
+        <h2>Core Values</h2>
+      </div>
+      <div class="col-sm-6 col-lg-3 mb-4 animate__animated animate__fadeInUp animate__delay-1s">
+        <div class="card shadow-sm p-3 h-100">
+          <i class="bi bi-people-fill fs-1 text-primary mb-3"></i>
+          <h5>Community</h5>
+          <p class="text-secondary">Grow stronger together with team challenges and support.</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3 mb-4 animate__animated animate__fadeInUp animate__delay-2s">
+        <div class="card shadow-sm p-3 h-100">
+          <i class="bi bi-bar-chart-fill fs-1 text-primary mb-3"></i>
+          <h5>Progress</h5>
+          <p class="text-secondary">Track your wins and learn from every step forward.</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3 mb-4 animate__animated animate__fadeInUp animate__delay-3s">
+        <div class="card shadow-sm p-3 h-100">
+          <i class="bi bi-lightning-fill fs-1 text-primary mb-3"></i>
+          <h5>Energy</h5>
+          <p class="text-secondary">Stay motivated with electrifying daily goals.</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3 mb-4 animate__animated animate__fadeInUp animate__delay-4s">
+        <div class="card shadow-sm p-3 h-100">
+          <i class="bi bi-award-fill fs-1 text-primary mb-3"></i>
+          <h5>Achievement</h5>
+          <p class="text-secondary">Earn badges and celebrate every milestone.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Team Section -->
+    <div class="row align-items-center mb-5">
+      <div class="col-md-6 order-md-2 animate__animated animate__fadeInRight">
+        <h2>Meet the Team</h2>
+        <p class="text-secondary">
+          A passionate crew of developers, designers, and fitness enthusiasts dedicated to your success.
+        </p>
+        <a routerLink="/contact" class="btn btn-lg btn-primary-custom mt-3 animate__animated animate__pulse">
+          Contact Us
+        </a>
+      </div>
+      <div class="col-md-6 order-md-1 animate__animated animate__fadeInLeft text-center">
+<!--        <app-lottie-loader [animationUrl]="'/assets/animations/team.json'"></app-lottie-loader>-->
+        <app-lottie-loader [animationUrl]="'/assets/animations/teams.json'"></app-lottie-loader>
+
+      </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="row">
+      <div class="col text-center animate__animated animate__zoomIn">
+        <h3 class="mb-3">Ready to start your journey?</h3>
+        <a routerLink="/home" href="#" class="btn btn-xl btn-outline-primary">
+          Get Started Today
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>

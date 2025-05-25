@@ -52,13 +52,6 @@ export class LottieLoaderComponent implements OnInit, AfterViewInit{
 
   ngOnInit(): void {
     if (this.animationUrl&&isPlatformBrowser(this.platformId)){
-      const styles = getComputedStyle(document.documentElement);
-      const palette = [
-        styles.getPropertyValue('--primary').trim(),
-        styles.getPropertyValue('--btn-hover')?.trim()   || '#74C0FC',
-        styles.getPropertyValue('--gradient-blue-start').trim(),
-        styles.getPropertyValue('--gradient-light-start').trim()
-      ];
     this.lottieRecolorService.fetchAndRecolor(this.animationUrl,lightPalette).then(animationData => {
 
       this.options={

@@ -1,7 +1,7 @@
 <section class="section-decoration bg-gradient-light py-5">
   <div class="container">
     <div class="row g-4" id="ex_row_cat">
-      <div  *ngFor="let category of categoriesChallenges" [routerLink]="'explore/'+category.slug" class="col-12 col-6 col-md-4">
+      <div  *ngFor="let category of categoriesChallenges" [routerLink]="['/explore',category.slug]" class="col-12 col-6 col-md-4">
         <div class="card card-custom h-100 d-flex flex-column animate__animated animate__fadeInUp">
           <!-- 1. Responsive ratio + rounded top + overflow hidden -->
           <div class="ratio ratio-16x9 rounded-top overflow-hidden position-relative">

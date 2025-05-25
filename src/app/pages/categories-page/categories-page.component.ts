@@ -24,7 +24,6 @@ export class CategoriesPageComponent implements OnInit{
 
   ngOnInit(): void {
     this.challengeService.getCategories().subscribe(value => {
-      console.log("ChallengeCategory ",value)
       this.categoriesChallenges=value;
     })
   }

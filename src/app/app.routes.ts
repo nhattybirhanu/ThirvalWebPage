@@ -9,10 +9,12 @@ import {CategoryChallengeDetailComponent} from './categorey-challenge-detail/cat
 import {CategoriesPageComponent} from './pages/categories-page/categories-page.component';
 import {PrivacyComponent} from './pages/privacy/privacy.component';
 import {TermsComponent} from './pages/terms/terms.component';
+import {FeaturePageComponent} from './feature-page/feature-page.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'about', component: AboutComponent },
+  {path:'features',component:FeaturePageComponent},
   {path:'explore',component:ExploreChallengePageComponent},
   {path:"explore/:id",component:CategoryChallengeDetailComponent,
     resolve:{
