@@ -60,9 +60,9 @@ export class HeroComponent implements OnInit{
     if (/android/i.test(userAgent)) {
       // Redirect to Google Play Store
       window.location.href = 'https://play.google.com/store/apps/details?id=com.az.thrival';
-    } else if (/iPad|iPhone|iPod/.test(userAgent)) {
+    } else if (/iPad|iPhone|Macintosh|iPod/.test(userAgent)) {
       // Redirect to Apple App Store
-      window.location.href = 'https://apps.apple.com/us/app/thrival-challenges/id67410573129';
+      window.location.href = 'https://apps.apple.com/us/app/thrival-challenges/id6746492071';
     } else {
       // Optional: fallback or show both links
       // window.location.href = 'https://yourwebsite.com/download';
